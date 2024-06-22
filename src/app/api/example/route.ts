@@ -1,12 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+export async function GET(request: Request) {
 
-type ResponseData = {
-    message: string
+    return Response.json({ message: 'Hello from Remirage!' })
 }
 
-export default function handler(
-    req: NextApiRequest,
-    res: NextApiResponse<ResponseData>
-) {
-    res.status(200).json({ message: 'Hello from Next.js!' })
-}
+
