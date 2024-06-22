@@ -12,6 +12,7 @@ import {
   NavigationMenuViewport,
 } from '@/components/ui/navigation-menu';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 const navigation = [
@@ -46,7 +47,9 @@ export default function Navbar() {
   return (
     <div className=" flex items-center justify-between px-10 py-4">
       <div className="flex items-center ">
-        <Image src="/logo/logo.png" alt="logo" width={60} height={60} />
+        <Link href={'/'}>
+          <Image src="/logo/logo.png" alt="logo" width={60} height={60} />
+        </Link>
         <NavigationMenu className="ml-4">
           <NavigationMenuList className="flex space-x-4">
             {navigation.map((item) => (
