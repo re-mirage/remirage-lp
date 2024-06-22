@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "push" : "git push && git push remirage"
   },
   "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.2.0",
     "babel-plugin-react-compiler": "^0.0.0-experimental-938cd9a-20240601",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
