@@ -11,20 +11,22 @@ type Tab = {
   content?: string | React.ReactNode | any;
 };
 
-export const Tabs = ({
-  tabs: propTabs,
-  containerClassName,
-  activeTabClassName,
-  tabClassName,
-  contentClassName,
-}: {
+interface ContentTabsProps {
   tabs: Tab[];
   containerClassName?: string;
   activeTabClassName?: string;
   description?: string;
   tabClassName?: string;
   contentClassName?: string;
-}) => {
+}
+
+export const ContentTabs = ({
+  tabs: propTabs,
+  containerClassName,
+  activeTabClassName,
+  tabClassName,
+  contentClassName,
+}: ContentTabsProps) => {
   const [active, setActive] = useState<Tab>(propTabs[0]);
   const [tabs, setTabs] = useState<Tab[]>(propTabs);
 
