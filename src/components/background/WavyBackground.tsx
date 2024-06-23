@@ -74,15 +74,22 @@ export default function WavyBackground({
   };
 
   let animationId: number;
-  const render = () => {
-    let backgroundColor = '#000'; // Default to dark background
 
-    if (theme === 'system') {
-      backgroundColor = systemTheme === 'dark' ? '#000' : '#fff';
-    } else {
-      backgroundColor = theme === 'dark' ? '#000' : '#fff';
+  const getDefaultBackgroundColor = (colorMode = theme) => {
+    if (colorMode === 'dark') {
+      return '#000000';
+    } else if (colorMode === 'light') {
+      return '#FFFFFF';
+    } else if (colorMode === 'system') {
+      if (systemTheme === 'dark') {
+        return '#000000';
+      } else {
+        return '#FFFFFF';
+      }
     }
-    ctx.fillStyle = backgroundFill || backgroundColor;
+  };
+  const render = () => {
+    ctx.fillStyle = backgroundFill || getDefaultBackgroundColor();
     ctx.globalAlpha = waveOpacity || 0.5;
     ctx.fillRect(0, 0, w, h);
     drawWave(5);
@@ -95,7 +102,7 @@ export default function WavyBackground({
       cancelAnimationFrame(animationId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [theme]);
+  }, [theme, systemTheme]);
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
