@@ -3,6 +3,7 @@ name: PR Notification
 on:
   pull_request:
     branches:
+      - dev
       - prod
 
 jobs:
@@ -17,7 +18,9 @@ jobs:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+          PR_HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"username": "GitHub Actions", "content": "New PR created by **'$GITHUB_ACTOR'**: **'$PR_TITLE'** (#'$PR_NUMBER')\n'$PR_URL'"}' \
+          -d '{"username": "GitHub Actions", "content": "New PR created by **'$GITHUB_ACTOR'**: **'$PR_TITLE'** (#'$PR_NUMBER')\nBranch: **'$PR_HEAD_BRANCH'** > **'$PR_BASE_BRANCH'**\n'$PR_URL'"}' \
           $DISCORD_WEBHOOK_URL
