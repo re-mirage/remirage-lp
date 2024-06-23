@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/layout/Navbar';
 import Footer from '@/layout/Footer';
 import { ThemeProvider } from '@/theme/theme-provider';
+import { footerLinks } from '@/routes/paths';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,7 +29,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
-          <Footer />
+          <Footer footerLinks={footerLinks} />
         </ThemeProvider>
       </body>
     </html>
