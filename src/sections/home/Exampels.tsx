@@ -1,7 +1,7 @@
 'use client';
 
-import { Tabs } from '@/components/Tabs';
 import SectionContainer from '@/components/containers/SectionContainer';
+import { ContentTabs } from '@/components/tabs/ContentTabs';
 import Image from 'next/image';
 
 export default function Examples() {
@@ -46,7 +46,7 @@ export default function Examples() {
 
   return (
     <SectionContainer>
-      <Tabs tabs={tabs} />
+      <ContentTabs tabs={tabs} />
     </SectionContainer>
   );
 }
