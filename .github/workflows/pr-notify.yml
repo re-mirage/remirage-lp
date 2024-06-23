@@ -1,0 +1,23 @@
+name: PR Notification
+
+on:
+  pull_request:
+    branches:
+      - prod
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send notification to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"username": "GitHub Actions", "content": "New PR created by **'$GITHUB_ACTOR'**: **'$PR_TITLE'** (#'$PR_NUMBER')\n'$PR_URL'"}' \
+          $DISCORD_WEBHOOK_URL
