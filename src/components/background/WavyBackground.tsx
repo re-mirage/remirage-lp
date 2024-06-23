@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 import React, { useEffect, useRef, useState } from 'react';
 import { createNoise3D } from 'simplex-noise';
 
@@ -26,6 +27,7 @@ export default function WavyBackground({
   waveOpacity?: number;
   [key: string]: any;
 }) {
+  const { theme } = useTheme();
   const noise = createNoise3D();
   let w: number, h: number, nt: number, i: number, x: number, ctx: any, canvas: any;
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -73,7 +75,7 @@ export default function WavyBackground({
 
   let animationId: number;
   const render = () => {
-    ctx.fillStyle = backgroundFill || 'black';
+    ctx.fillStyle = backgroundFill || theme === 'dark' ? '#000' : 'white';
     ctx.globalAlpha = waveOpacity || 0.5;
     ctx.fillRect(0, 0, w, h);
     drawWave(5);
@@ -85,7 +87,8 @@ export default function WavyBackground({
     return () => {
       cancelAnimationFrame(animationId);
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [theme]);
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
