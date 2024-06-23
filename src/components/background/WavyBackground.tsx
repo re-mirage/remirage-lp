@@ -27,7 +27,7 @@ export default function WavyBackground({
   waveOpacity?: number;
   [key: string]: any;
 }) {
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
   const noise = createNoise3D();
   let w: number, h: number, nt: number, i: number, x: number, ctx: any, canvas: any;
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -75,7 +75,14 @@ export default function WavyBackground({
 
   let animationId: number;
   const render = () => {
-    ctx.fillStyle = backgroundFill || theme === 'dark' ? '#000' : 'white';
+    let backgroundColor = '#000'; // Default to dark background
+
+    if (theme === 'system') {
+      backgroundColor = systemTheme === 'dark' ? '#000' : '#fff';
+    } else {
+      backgroundColor = theme === 'dark' ? '#000' : '#fff';
+    }
+    ctx.fillStyle = backgroundFill || backgroundColor;
     ctx.globalAlpha = waveOpacity || 0.5;
     ctx.fillRect(0, 0, w, h);
     drawWave(5);
