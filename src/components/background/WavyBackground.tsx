@@ -31,6 +31,7 @@ export default function WavyBackground({
   const noise = createNoise3D();
   let w: number, h: number, nt: number, i: number, x: number, ctx: any, canvas: any;
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
   const getSpeed = () => {
     switch (speed) {
       case 'slow':
@@ -49,11 +50,6 @@ export default function WavyBackground({
     h = ctx.canvas.height = window.innerHeight;
     ctx.filter = `blur(${blur}px)`;
     nt = 0;
-    window.onresize = function () {
-      w = ctx.canvas.width = window.innerWidth;
-      h = ctx.canvas.height = window.innerHeight;
-      ctx.filter = `blur(${blur}px)`;
-    };
     render();
   };
 
@@ -66,7 +62,7 @@ export default function WavyBackground({
       ctx.strokeStyle = waveColors[i % waveColors.length];
       for (x = 0; x < w; x += 5) {
         var y = noise(x / 800, 0.3 * i, nt) * 100;
-        ctx.lineTo(x, y + h * 0.5); // adjust for height, currently at 50% of the container
+        ctx.lineTo(x, y + h * 0.5);
       }
       ctx.stroke();
       ctx.closePath();
@@ -88,6 +84,7 @@ export default function WavyBackground({
       }
     }
   };
+
   const render = () => {
     ctx.fillStyle = backgroundFill || getDefaultBackgroundColor();
     ctx.globalAlpha = waveOpacity || 0.5;
@@ -98,15 +95,20 @@ export default function WavyBackground({
 
   useEffect(() => {
     init();
+    const handleResize = () => {
+      w = ctx.canvas.width = window.innerWidth;
+      h = ctx.canvas.height = window.innerHeight;
+      ctx.filter = `blur(${blur}px)`;
+    };
+    window.addEventListener('resize', handleResize);
     return () => {
       cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', handleResize);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme, systemTheme]);
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
-    // I'm sorry but i have got to support it on safari.
     setIsSafari(
       typeof window !== 'undefined' &&
         navigator.userAgent.includes('Safari') &&
@@ -115,16 +117,19 @@ export default function WavyBackground({
   }, []);
 
   return (
-    <div className={cn('h-screen flex flex-col items-center justify-center', containerClassName)}>
+    <div className={cn('relative w-full overflow-hidden', containerClassName)}>
       <canvas
-        className="absolute z-0"
+        className="absolute inset-0 w-full h-full"
         ref={canvasRef}
         id="canvas"
         style={{
           ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
         }}
       ></canvas>
-      <div className={cn('relative z-10', className)} {...props}>
+      <div
+        className={cn('relative z-10 container mx-auto px-4 sm:px-6 lg:px-8', className)}
+        {...props}
+      >
         {children}
       </div>
     </div>

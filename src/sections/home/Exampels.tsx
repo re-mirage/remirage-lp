@@ -11,23 +11,15 @@ export default function Examples() {
       description:
         'Our experienced team guides you from ideas to implementation, leveraging our expertise to provide the best solutions for your needs.',
       value: 'product',
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Your Reliable Partner</p>
-          <DummyContent />
-        </div>
-      ),
+      content: <TabContent title="Your Reliable Partner" imageSrc="/projects/egaliti-mlro.png" />,
     },
     {
       title: 'Your Technology Specialists',
       description:
-        'Our skilled professionals deliver customized, scalable, and quality IT solutions, ensuring your receive services as per your requirements.',
+        'Our skilled professionals deliver customized, scalable, and quality IT solutions, ensuring you receive services as per your requirements.',
       value: 'services',
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Your Technology Specialists</p>
-          <DummyContent />
-        </div>
+        <TabContent title="Your Technology Specialists" imageSrc="/projects/egaliti-mlro.png" />
       ),
     },
     {
@@ -36,29 +28,33 @@ export default function Examples() {
         'We offer maintenance, customization and application development services both onsite and offsite.',
       value: 'playground',
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Your Global Delivery Workforce</p>
-          <DummyContent />
-        </div>
+        <TabContent title="Your Global Delivery Workforce" imageSrc="/projects/egaliti-mlro.png" />
       ),
     },
   ];
 
   return (
     <SectionContainer>
-      <ContentTabs tabs={tabs} />
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Our Services</h2>
+      <div className="relative">
+        <ContentTabs tabs={tabs} contentClassName="mt-8" />
+      </div>
     </SectionContainer>
   );
 }
 
-const DummyContent = () => {
+interface TabContentProps {
+  title: string;
+  imageSrc: string;
+}
+
+const TabContent = ({ title, imageSrc }: TabContentProps) => {
   return (
-    <Image
-      src="/projects/egaliti-mlro.png"
-      alt="dummy image"
-      width="1000"
-      height="1000"
-      className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
-    />
+    <div className="w-full rounded-2xl p-6 md:p-10 text-white bg-gradient-to-br from-purple-700 to-violet-900 overflow-hidden">
+      <h3 className="text-xl md:text-3xl font-bold mb-6">{title}</h3>
+      <div className="relative w-full aspect-video">
+        <Image src={imageSrc} alt={title} layout="fill" objectFit="cover" className="rounded-3xl" />
+      </div>
+    </div>
   );
 };

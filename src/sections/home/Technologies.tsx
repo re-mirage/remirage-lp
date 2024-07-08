@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 enum Industry {
@@ -96,7 +97,9 @@ export default function Technologies() {
   return (
     <SectionContainer>
       {/* /Technology section headline */}
-      <h2 className="text-3xl font-medium text-center py-8">Technologies we work with</h2>
+      <h2 className="text-3xl font-medium text-center py-8 text-white  ">
+        Technologies we work with
+      </h2>
       <Tabs defaultValue={technologies[0].value} className="w-full">
         <TabsList className="grid w-full grid-cols-3 sm:grid-cols-5">
           {technologies.map((technology) => (
