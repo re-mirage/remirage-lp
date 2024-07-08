@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ['', 'blog', 'contact', 'pricing', 'ressources', 'solution'].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
+    changeFrequency: 'weekly' as 'weekly',
   }));
 
   return [...routes];
