@@ -26,10 +26,32 @@ const config = {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
+          50: 'hsl(262.1, 83.3%, 97%)',
+          100: 'hsl(262.1, 83.3%, 92%)',
+          200: 'hsl(262.1, 83.3%, 85%)',
+          300: 'hsl(262.1, 83.3%, 75%)',
+          400: 'hsl(262.1, 83.3%, 67%)',
+          500: 'hsl(262.1, 83.3%, 57.8%)',
+          600: 'hsl(262.1, 83.3%, 52%)',
+          700: 'hsl(262.1, 83.3%, 45%)',
+          800: 'hsl(262.1, 83.3%, 38%)',
+          900: 'hsl(262.1, 83.3%, 30%)',
+          950: 'hsl(262.1, 83.3%, 20%)',
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
+          50: 'hsl(220, 14.3%, 98%)',
+          100: 'hsl(220, 14.3%, 95.9%)',
+          200: 'hsl(220, 14.3%, 91%)',
+          300: 'hsl(220, 14.3%, 85%)',
+          400: 'hsl(220, 14.3%, 75%)',
+          500: 'hsl(220, 14.3%, 65%)',
+          600: 'hsl(220, 14.3%, 55%)',
+          700: 'hsl(220, 14.3%, 45%)',
+          800: 'hsl(220, 14.3%, 35%)',
+          900: 'hsl(220, 14.3%, 25%)',
+          950: 'hsl(220, 14.3%, 15%)',
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
@@ -87,7 +109,6 @@ const config = {
   plugins: [require('tailwindcss-animate'), addVariablesForColors],
 } satisfies Config;
 
-// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme('colors'));
   let newVars = Object.fromEntries(
