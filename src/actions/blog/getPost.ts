@@ -1,13 +1,8 @@
 import { posts } from '@/mock/blog';
+import { Post } from '@/types/blog';
 
-export async function getPosts() {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return posts.map(({ slug, title, excerpt, date, author, image }) => ({
-    slug,
-    title,
-    excerpt,
-    date,
-    author,
-    image,
-  }));
+export async function getPost(slug: string): Promise<Post | null> {
+  const post = posts.find((p) => p.slug === slug);
+
+  return post || null;
 }
