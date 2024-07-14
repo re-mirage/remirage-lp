@@ -15,27 +15,26 @@ type FooterProps = {
 };
 
 export default function Footer({ footerLinks }: FooterProps) {
-  const renderColumns = () => {
-    return footerLinks.map((column, index) => (
-      <div key={index}>
-        <h2 className="text-lg font-semibold mb-4 ">{column.headline}</h2>
-        <ul>
-          {column.items.map((item, itemIndex) => (
-            <li key={itemIndex} className="mb-2">
-              <a href={item.link} className="hover:underline">
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    ));
-  };
-
   return (
-    <footer className=" text-white p-8 ">
-      <div className=" mx-32 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {renderColumns()}
+    <footer className="text-white p-6 md:p-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {footerLinks.map((column, index) => (
+          <div key={index} className="flex flex-col">
+            <h2 className="text-lg font-semibold mb-4">{column.headline}</h2>
+            <ul className="space-y-2">
+              {column.items.map((item, itemIndex) => (
+                <li key={itemIndex}>
+                  <a
+                    href={item.link}
+                    className="hover:underline transition-colors duration-200 ease-in-out"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </footer>
   );

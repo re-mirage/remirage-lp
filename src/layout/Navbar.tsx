@@ -17,7 +17,7 @@ import { Button } from '@/components/buttons/button';
 const navigation = [
   { title: 'Product', href: '/product' },
   { title: 'Solution', href: '/solution' },
-  { title: 'Resource', href: '/resource' },
+  { title: 'Resources', href: '/resources' },
   { title: 'Pricing', href: '/pricing' },
   { title: 'Blog', href: '/blog' },
   { title: 'Contact Us', href: '/contact' },
