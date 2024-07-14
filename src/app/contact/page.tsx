@@ -8,14 +8,14 @@ import { Textarea } from '@/components/ui/textarea';
 export default function Contact() {
   return (
     <Container>
-      <div className="py-12">
+      <div className="py-12 w-full">
         <h1 className="text-4xl font-bold mb-8 text-center">Contact Us</h1>
-        <Card className="max-w-2xl mx-auto">
+        <Card className="max-w-screen-lg mx-auto">
           <CardHeader>
             <CardTitle>Get in touch</CardTitle>
           </CardHeader>
           <CardContent>
-            <form className="space-y-4">
+            <form className="space-y-4 ">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input placeholder="First Name" />
                 <Input placeholder="Last Name" />
