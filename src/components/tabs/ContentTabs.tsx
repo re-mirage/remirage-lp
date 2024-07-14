@@ -44,7 +44,7 @@ export const ContentTabs = ({
     <>
       <div
         className={cn(
-          'flex flex-row items-center justify-start [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full',
+          'flex flex-row items-center justify-start relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full',
           containerClassName
         )}
       >
@@ -56,7 +56,7 @@ export const ContentTabs = ({
             }}
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
-            className={cn('h-32 px-8 py-8 rounded-md', tabClassName)}
+            className={cn('flex-1 min-w-[200px] h-32 px-4 py-2 rounded-md', tabClassName)}
             style={{
               transformStyle: 'preserve-3d',
             }}
@@ -66,14 +66,16 @@ export const ContentTabs = ({
                 layoutId="clickedbutton"
                 transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
                 className={cn(
-                  'absolute inset-0 bg-gray-200 dark:bg-primary  rounded-md bg-gradient-to-r from-[#8A0BFF] to-[#8A0BFF]',
+                  'absolute inset-0 bg-gray-200 dark:bg-primary rounded-md bg-gradient-to-r from-[#8A0BFF] to-[#8A0BFF]',
                   activeTabClassName
                 )}
               />
             )}
 
-            <span className="relative block text-black dark:text-white text-2xl ">{tab.title}</span>
-            <span className="relative block text-black dark:text-white text-sm">
+            <span className="relative block text-black dark:text-white text-sm  md:text-2xl bold">
+              {tab.title}
+            </span>
+            <span className="relative hidden text-black dark:text-white text-xs sm:text-sm md:text-md lg:text-lg sm:block">
               {tab.description}
             </span>
           </button>
@@ -84,7 +86,7 @@ export const ContentTabs = ({
         active={active}
         key={active.value}
         hovering={hovering}
-        className={cn('mt-32', contentClassName)}
+        className={cn('mt-8', contentClassName)}
       />
     </>
   );
@@ -112,14 +114,18 @@ export const FadeInDiv = ({
           layoutId={tab.value}
           style={{
             scale: 1 - idx * 0.1,
-            top: hovering ? idx * -50 : 0,
+            transform: hovering ? `translateY(${idx * -50}px)` : 'none',
             zIndex: -idx,
             opacity: idx < 3 ? 1 - idx * 0.1 : 0,
           }}
           animate={{
             y: isActive(tab) ? [0, 40, 0] : 0,
           }}
-          className={cn('w-full h-full absolute top-0 left-0', className)}
+          className={cn(
+            'w-full h-full relative top-0 left-0',
+            className,
+            isActive(tab) ? 'visible' : 'hidden'
+          )}
         >
           {tab.content}
         </motion.div>
