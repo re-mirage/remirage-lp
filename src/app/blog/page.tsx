@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Container from '@/layout/Container';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { getPosts } from '@/actions/blog/getPost';
+import { getPosts } from '@/actions/blog/getPosts';
 import { Button } from '@/components/buttons/button';
 import Link from 'next/link';
 import { Metadata } from 'next';

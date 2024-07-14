@@ -13,6 +13,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/buttons/button';
+import Logo from '@/components/logo/Logo';
+import Stack from '@/components/containers/Stack';
 
 const navigation = [
   { title: 'Product', href: '/product' },
@@ -32,35 +34,33 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0">
-              <Image
-                src="/logo/logo.png"
-                alt="logo"
-                width={100}
-                height={100}
-                className="h-14 w-auto"
-              />
-            </Link>
+            <Stack spacing={5}>
+              <Link href="/" className="flex-shrink-0">
+                <Logo />
+              </Link>
+              <div className="hidden lg:flex lg:items-center lg:space-x-4">
+                <NavigationMenu>
+                  <NavigationMenuList className="flex space-x-4">
+                    {navigation.map((item) => (
+                      <NavigationMenuItem key={item.title}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={item.href}
+                            className="text-sm font-medium text-white transition-colors hover:text-primary"
+                          >
+                            {item.title}
+                          </Link>
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
+                    ))}
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </div>
+            </Stack>
           </div>
 
           {/* Desktop menu */}
           <div className="hidden lg:flex lg:items-center lg:space-x-4">
-            <NavigationMenu>
-              <NavigationMenuList className="flex space-x-4">
-                {navigation.map((item) => (
-                  <NavigationMenuItem key={item.title}>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        href={item.href}
-                        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                      >
-                        {item.title}
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
             <Button variant="default" size="sm" onClick={() => router.push('/contact')}>
               Schedule a consultation
             </Button>

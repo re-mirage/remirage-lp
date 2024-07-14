@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Container from '@/layout/Container';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { getPost } from '@/actions/blog/getPosts';
+import { getPost } from '@/actions/blog/getPost';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { Metadata } from 'next';
