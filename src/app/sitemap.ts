@@ -8,15 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ['blog', 'contact', 'pricing', 'ressources', 'solution'].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
-    changeFrequency: 'weekly' as 'weekly',
   }));
-  posts.forEach((post: Post) => {
-    routes.push({
-      url: `${siteUrl}/blog/${post.slug}`,
-      lastModified: post.date,
-      changeFrequency: 'weekly',
-    });
-  });
 
-  return [...routes];
+  const postRoutes = posts.map((post: Post) => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    lastModified: post.date,
+  }));
+
+  return [...routes, ...postRoutes];
 }
