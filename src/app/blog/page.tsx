@@ -28,12 +28,15 @@ export default async function Blog() {
   const posts = await getPosts();
 
   return (
-    <Container>
+    <Container className="px-6 md:px:10 lg:px-12">
       <div className="py-12">
         <h1 className="text-4xl font-bold mb-8 text-center">Our Blog</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <Card key={post.slug} className="flex flex-col">
+            <Card
+              key={post.slug}
+              className="flex flex-col group-hover/bento:translate-x-2 transition duration-200"
+            >
               <div className="relative w-full h-48">
                 <Image
                   src={post.image}
@@ -43,14 +46,18 @@ export default async function Blog() {
                   className="rounded-t-lg"
                 />
               </div>
+
               <CardHeader>
-                <CardTitle>{post.title}</CardTitle>
+                <CardTitle className="text-left">{post.title}</CardTitle>
                 <CardDescription>
                   {post.date} | By {post.author.name}
                 </CardDescription>
               </CardHeader>
+
               <CardContent className="flex-grow">
-                <p className="mb-4">{post.excerpt}</p>
+                <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
+                  {post.excerpt}
+                </div>
               </CardContent>
               <CardContent className="pt-0">
                 <Button asChild>
