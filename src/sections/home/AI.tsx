@@ -1,13 +1,15 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import Lottie from 'react-lottie-player';
+const Lottie = dynamic(() => import('react-lottie-player'), { ssr: false });
+
 import { Card, CardContent } from '@/components/ui/card';
 import { SparklesCore } from '@/components/ui/sparkles';
 import SectionContainer from '@/components/containers/SectionContainer';
 import TextGenerateEffect from '@/components/text/text-generate-effect';
 import { Button } from '@/components/buttons/button';
 import aiAnimation from '@/data/ai.json';
+import dynamic from 'next/dynamic';
 
 const AISection = () => {
   return (
