@@ -9,7 +9,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{project.name}</CardTitle>
+        <CardTitle>{project.title}</CardTitle>
       </CardHeader>
       <CardContent>
         <p>{project.description}</p>

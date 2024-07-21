@@ -11,7 +11,7 @@ export default function Examples() {
       description:
         'Our experienced team guides you from ideas to implementation, leveraging our expertise to provide the best solutions for your needs.',
       value: 'product',
-      content: <TabContent title="Your Reliable Partner" imageSrc="/projects/egaliti-mlro.png" />,
+      content: <TabContent title="Your Reliable Partner" imageSrc="/projects/egaliti/1.png" />,
     },
     {
       title: 'Your Technology Specialists',
@@ -19,7 +19,7 @@ export default function Examples() {
         'Our skilled professionals deliver customized, scalable, and quality IT solutions, ensuring you receive services as per your requirements.',
       value: 'services',
       content: (
-        <TabContent title="Your Technology Specialists" imageSrc="/projects/egaliti-mlro.png" />
+        <TabContent title="Your Technology Specialists" imageSrc="/projects/egaliti/2.png" />
       ),
     },
     {
@@ -28,7 +28,7 @@ export default function Examples() {
         'We offer maintenance, customization and application development services both onsite and offsite.',
       value: 'playground',
       content: (
-        <TabContent title="Your Global Delivery Workforce" imageSrc="/projects/egaliti-mlro.png" />
+        <TabContent title="Your Global Delivery Workforce" imageSrc="/projects/egaliti/3.png" />
       ),
     },
   ];
@@ -53,7 +53,7 @@ const TabContent = ({ title, imageSrc }: TabContentProps) => {
     <div className="w-full rounded-2xl p-6 md:p-10 text-white bg-gradient-to-br from-purple-700 to-violet-900 overflow-hidden">
       <h3 className="text-xl md:text-3xl font-bold mb-6">{title}</h3>
       <div className="relative w-full aspect-video">
-        <Image src={imageSrc} alt={title} layout="fill" objectFit="cover" className="rounded-3xl" />
+        <Image src={imageSrc} alt={title} layout="fill" className="rounded-3xl" />
       </div>
     </div>
   );
