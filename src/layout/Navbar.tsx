@@ -15,9 +15,11 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/buttons/button';
 import Logo from '@/components/logo/Logo';
 import Stack from '@/components/containers/Stack';
+import { paths } from '@/routes/paths';
 
 const navigation = [
-  { title: 'Product', href: '/product' },
+  { title: 'Projects', href: paths.projects.root() },
+  { title: 'Team', href: paths.team.root() },
   { title: 'Solution', href: '/solution' },
   { title: 'Resources', href: '/resources' },
   { title: 'Pricing', href: '/pricing' },
