@@ -6,7 +6,7 @@ const team: Member[] = [
     firstName: 'MOHAMED',
     lastName: 'EL BSSIR',
     role: 'Senior Developer',
-    avatar: '/team/simo.jpg',
+    avatar: '/team/elbssir.jpg',
     skills: ['React', 'Node.js', 'TypeScript', 'NextJs', 'AWS'],
     bio: ' Mohamed is a seasoned developer with over 10 years of experience in web development...',
     projects: ['1', '2'],
