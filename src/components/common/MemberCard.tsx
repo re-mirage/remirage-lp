@@ -1,0 +1,49 @@
+'use client';
+import { motion } from 'framer-motion';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+
+import { useRouter } from 'next/navigation';
+import { Badge } from '../ui/badge';
+import { Member } from '@/types/team';
+import { paths } from '@/routes/paths';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+
+interface MemberCardProps {
+  member: Member;
+}
+export default function MemberCard({ member }: MemberCardProps) {
+  const router = useRouter();
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => router.push(paths.team.member(member.username))}
+    >
+      <Card className="cursor-pointer">
+        <CardHeader className="flex flex-row items-center gap-4">
+          <Avatar className="w-16 h-16 rounded-full">
+            <AvatarImage src={member.avatar} alt={member.firstName} />
+            <AvatarFallback>
+              {member.firstName.charAt(0) + member.lastName.charAt(0)}
+            </AvatarFallback>
+          </Avatar>
+          <div>
+            <CardTitle>
+              {member.firstName} {member.lastName}
+            </CardTitle>
+            <CardDescription>{member.role}</CardDescription>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-2">
+            {member.skills.map((skill, index) => (
+              <Badge key={index} variant="secondary">
+                {skill}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
