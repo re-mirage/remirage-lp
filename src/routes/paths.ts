@@ -1,3 +1,33 @@
+import { Query, toQuery } from '@/utils/formatString';
+
+interface Path {
+  home: {
+    root: () => string;
+  };
+  team: {
+    root: (query?: Query) => string;
+    member: (member: string) => string;
+  };
+  projects: {
+    root: (query?: Query) => string;
+    project: (project: string) => string;
+  };
+}
+
+export const paths: Path = {
+  home: {
+    root: () => '/',
+  },
+  team: {
+    root: (query) => `/team${toQuery(query)}`,
+    member: (member) => `/team/${member}`,
+  },
+  projects: {
+    root: (query) => `/projects${toQuery(query)}`,
+    project: (project) => `/projects/${project}`,
+  },
+};
+
 export const footerLinks = [
   {
     headline: 'Product',
