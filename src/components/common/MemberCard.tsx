@@ -17,7 +17,7 @@ export default function MemberCard({ member }: MemberCardProps) {
     <motion.div
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      onClick={() => router.push(paths.team.member(member.username))}
+      onClick={() => router.push(paths.landing.team.member(member.username))}
     >
       <Card className="cursor-pointer">
         <CardHeader className="flex flex-row items-center gap-4">
