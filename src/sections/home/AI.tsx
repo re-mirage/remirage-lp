@@ -14,7 +14,7 @@ import dynamic from 'next/dynamic';
 const AISection = () => {
   return (
     <SectionContainer>
-      <div className="relative w-full bg-black/[0.96] antialiased bg-grid-white/[0.02] py-12">
+      <div className="relative w-full antialiased bg-grid-white/[0.02] py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
