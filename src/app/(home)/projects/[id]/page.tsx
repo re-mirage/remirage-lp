@@ -83,8 +83,8 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                   <AnimatedTooltip
                     items={project.team.map((member, index) => ({
                       id: index,
-                      name: `${member.firstName} ${member.lastName}`,
-                      designation: member.role,
+                      name: `${member.first_name} ${member.last_name}`,
+                      designation: member.role[0],
                       image: member.avatar,
                     }))}
                   />

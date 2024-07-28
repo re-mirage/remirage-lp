@@ -88,7 +88,7 @@ export function ProjectsList({ initialProjects }: ProjectsListProps) {
             <SelectItem value="all">All Team Members</SelectItem>
             {uniqueTeamMembers.map((member) => (
               <SelectItem key={member.username} value={member.username}>
-                {member.firstName} {member.lastName}
+                {member.first_name} {member.last_name}
               </SelectItem>
             ))}
           </SelectContent>
@@ -142,8 +142,8 @@ export function ProjectsList({ initialProjects }: ProjectsListProps) {
                 <AnimatedTooltip
                   items={project.team.map((member, index) => ({
                     id: index,
-                    name: member.firstName + ' ' + member.lastName,
-                    designation: member.role,
+                    name: member.first_name + ' ' + member.last_name,
+                    designation: member.position,
                     image: member.avatar,
                   }))}
                 />

@@ -16,7 +16,7 @@ export default async function TeamMemberPage({ params }: { params: { username: s
     notFound();
   }
   const projects = await getProjects();
-  const memberProjects = projects.filter((project) => member.projects.includes(project.id));
+  const memberProjects = projects;
 
   return (
     <Container className="px-10">
@@ -29,8 +29,8 @@ export default async function TeamMemberPage({ params }: { params: { username: s
         <div className="flex flex-col items-center mb-8">
           <AnimatedDiv initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>
             <Avatar className="w-32 h-32">
-              <AvatarImage src={member.avatar} alt={member.firstName} />
-              <AvatarFallback>{member.firstName}</AvatarFallback>
+              <AvatarImage src={member.avatar} alt={member.first_name} />
+              <AvatarFallback>{member.first_name}</AvatarFallback>
             </Avatar>
           </AnimatedDiv>
           <AnimatedTitle
@@ -39,7 +39,7 @@ export default async function TeamMemberPage({ params }: { params: { username: s
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {member.firstName} {member.lastName}
+            {member.first_name} {member.last_name}
           </AnimatedTitle>
           <p className="text-xl text-gray-600">{member.role}</p>
         </div>
