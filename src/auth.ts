@@ -1,4 +1,4 @@
-import NextAuth, { User } from 'next-auth';
+import NextAuth, { User, NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
@@ -6,9 +6,8 @@ import { paths, ROOTS } from './routes/paths';
 
 const username = 'demo@demo.com';
 const password = 'demo';
-const authConfig = {
+const authConfig: NextAuthConfig = {
   trustHost: true,
-  trustHostedDomain: true,
   providers: [
     Credentials({
       credentials: {

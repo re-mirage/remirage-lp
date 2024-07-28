@@ -11,6 +11,8 @@ export interface Project {
   team: Member[];
   category: string[];
   reviews?: Review[];
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 interface Review {
