@@ -1,68 +1,74 @@
 import { Query, toQuery } from '@/utils/formatString';
 
-interface Path {
-  home: {
-    root: () => string;
-  };
-  team: {
-    root: (query?: Query) => string;
-    member: (member: string) => string;
-  };
-  projects: {
-    root: (query?: Query) => string;
-    project: (project: string) => string;
-  };
-}
-
-export const paths: Path = {
-  home: {
-    root: () => '/',
-  },
-  team: {
-    root: (query) => `/team${toQuery(query)}`,
-    member: (member) => `/team/${member}`,
-  },
-  projects: {
-    root: (query) => `/projects${toQuery(query)}`,
-    project: (project) => `/projects/${project}`,
-  },
+export const ROOTS = {
+  AUTH: '/auth',
+  DASHBOARD: '/admin',
+  LANDING: '/',
 };
 
-export const footerLinks = [
-  {
-    headline: 'Product',
-    items: [
-      { name: 'People', link: '#' },
-      { name: 'Time Off', link: '#' },
-      { name: 'Company', link: '#' },
-      { name: 'Enterprise', link: '#' },
-    ],
+// ----------------------------------------------------------------------
+
+export const paths = {
+  // AUTH
+  auth: {
+    login: `${ROOTS.AUTH}/login`,
+    verify: `${ROOTS.AUTH}/verify`,
+    register: `${ROOTS.AUTH}/register`,
+    newPassword: `${ROOTS.AUTH}/new-password`,
+    forgotPassword: `${ROOTS.AUTH}/forgot-password`,
   },
-  {
-    headline: 'Resources',
-    items: [
-      { name: 'Documentation', link: '#' },
-      { name: 'API Reference', link: '#' },
-      { name: 'Support', link: '#' },
-      { name: 'Pricing', link: '#' },
-    ],
+  // DASHBOARD
+  dashboard: {
+    root: ROOTS.DASHBOARD,
+    projects: {
+      root: () => `${ROOTS.DASHBOARD}/projects`,
+      project: (project: string) => `${ROOTS.DASHBOARD}/projects/${project}`,
+    },
+
+    blog: {
+      root: () => `${ROOTS.DASHBOARD}/articles`,
+      article: (article: string) => `${ROOTS.DASHBOARD}/articles/${article}`,
+    },
+    contacts: {
+      root: () => `${ROOTS.DASHBOARD}/contacts`,
+      chat: (id: string) => `${ROOTS.DASHBOARD}/contacts/${id}`,
+    },
+
+    users: {
+      root: () => `${ROOTS.DASHBOARD}/users`,
+      user: (member: string) => `${ROOTS.DASHBOARD}/users/${member}`,
+    },
+    settings: {
+      root: () => `${ROOTS.DASHBOARD}/settings`,
+    },
   },
-  {
-    headline: 'Company',
-    items: [
-      { name: 'About Us', link: '#' },
-      { name: 'Careers', link: '#' },
-      { name: 'Blog', link: '#' },
-      { name: 'Press', link: '#' },
-    ],
+  landing: {
+    home: {
+      root: () => `${ROOTS.LANDING}`,
+    },
+    team: {
+      root: (query?: Query) => `${ROOTS.LANDING}/team${toQuery(query)}`,
+      member: (member: string) => `${ROOTS.LANDING}/team/${member}`,
+    },
+    projects: {
+      root: (query?: Query) => `${ROOTS.LANDING}/projects${toQuery(query)}`,
+      project: (project: string) => `${ROOTS.LANDING}/projects/${project}`,
+    },
+    solution: {
+      root: (query?: Query) => `${ROOTS.LANDING}/solution${toQuery(query)}`,
+    },
+    resources: {
+      root: (query?: Query) => `${ROOTS.LANDING}/resources${toQuery(query)}`,
+    },
+    pricing: {
+      root: (query?: Query) => `${ROOTS.LANDING}/pricing${toQuery(query)}`,
+    },
+    blog: {
+      root: (query?: Query) => `${ROOTS.LANDING}/blog${toQuery(query)}`,
+      article: (article: string) => `${ROOTS.LANDING}/blog/${article}`,
+    },
+    contact: {
+      root: (query?: Query) => `${ROOTS.LANDING}/contact${toQuery(query)}`,
+    },
   },
-  {
-    headline: 'Legal',
-    items: [
-      { name: 'Privacy Policy', link: '#' },
-      { name: 'Terms of Service', link: '#' },
-      { name: 'Cookie Policy', link: '#' },
-      { name: 'Compliance', link: '#' },
-    ],
-  },
-];
+};
