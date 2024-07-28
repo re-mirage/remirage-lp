@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import Container from '@/layout/Container';
+import Container from '@/layouts/home/Container';
 import { notFound } from 'next/navigation';
 import AnimatedDiv from '@/components/motion/animated-div';
 import ProjectCard from '@/components/common/ProjectCard';
@@ -67,7 +67,7 @@ export default async function TeamMemberPage({ params }: { params: { username: s
                 key={index}
                 variant="secondary"
                 skill={skill}
-                href={paths.projects.root({
+                href={paths.landing.projects.root({
                   skill,
                 })}
               />

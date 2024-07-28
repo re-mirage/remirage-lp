@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import Container from '@/layout/Container';
+import Container from '@/layouts/home/Container';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getPost } from '@/actions/blog/getPost';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';

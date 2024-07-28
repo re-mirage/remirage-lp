@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '@/layout/Container';
+import Container from '@/layouts/home/Container';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/buttons/button';
 

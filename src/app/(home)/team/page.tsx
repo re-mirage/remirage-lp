@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '@/layout/Container';
+import Container from '@/layouts/home/Container';
 import AnimatedTitle from '@/components/motion/animated-title';
 import AnimatedDiv from '@/components/motion/animated-div';
 import { getTeam } from '@/actions/team/getTeam';

@@ -1,4 +1,4 @@
-import Container from '@/layout/Container';
+import Container from '@/layouts/home/Container';
 import AI from '@/sections/home/AI';
 import Exampels from '@/sections/home/Exampels';
 import Hero from '@/sections/home/Hero';

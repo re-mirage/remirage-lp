@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Container from '@/layout/Container';
+import Container from '@/layouts/home/Container';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getPosts } from '@/actions/blog/getPosts';
 import { Button } from '@/components/buttons/button';
