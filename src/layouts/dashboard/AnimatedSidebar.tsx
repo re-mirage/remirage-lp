@@ -4,6 +4,8 @@ import { Home, Users, Folder, FileText, Mail, Settings, Menu, X } from 'lucide-r
 import Link from 'next/link';
 import siteMetadata from '@/config/siteMetadata';
 import { paths } from '@/routes/paths';
+import Logo from '@/components/logo/Logo';
+import Stack from '@/components/containers/Stack';
 
 const menuItems = [
   { icon: Home, label: 'Dashboard', href: paths.dashboard.root },
@@ -42,7 +44,9 @@ export default function Sidebar({
             }`}
           >
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold">{siteMetadata.title}</h2>
+              <Stack className="justify-center md:justify-normal ">
+                <Logo />
+              </Stack>
               <button onClick={toggleSidebar} className="lg:hidden text-gray-300 hover:text-white">
                 <X size={24} />
               </button>
