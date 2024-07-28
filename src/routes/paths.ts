@@ -40,6 +40,7 @@ export const paths = {
     },
     settings: {
       root: () => `${ROOTS.DASHBOARD}/settings`,
+      profile: () => `${ROOTS.DASHBOARD}/profile`,
     },
   },
   landing: {

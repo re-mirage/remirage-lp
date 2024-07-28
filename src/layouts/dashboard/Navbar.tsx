@@ -16,15 +16,16 @@ import { useRouter } from 'next/navigation';
 export default function Navbar() {
   const router = useRouter();
   const { data } = useSession();
-
   return (
     <nav className="bg-white shadow-md p-4 flex justify-end items-center">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button className="flex items-center space-x-2 focus:outline-none">
             <Avatar>
-              <AvatarImage src="https://github.com/amcinox.png" alt="@amcinox" />
-              <AvatarFallback>AM</AvatarFallback>
+              <AvatarImage src={data?.user.avatar} alt={data?.user.username} />
+              <AvatarFallback>
+                {data?.user?.first_name?.charAt(0)} {data?.user?.last_name?.charAt(0)}
+              </AvatarFallback>
             </Avatar>
             <ChevronDown size={20} />
           </button>
@@ -35,7 +36,7 @@ export default function Navbar() {
 
           <DropdownMenuItem
             className="hover:cursor-pointer"
-            onClick={() => router.push(paths.dashboard.users.user('#'))}
+            onClick={() => router.push(paths.dashboard.settings.profile())}
           >
             <User className="mr-2 h-4 w-4" />
             <span>Profile</span>

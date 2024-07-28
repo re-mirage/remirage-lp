@@ -9,7 +9,7 @@ import login from '@/auth/actions/login';
 import FormProvider from '@/components/RHF/FormProvider';
 
 const loginSchema = z.object({
-  username: z.string().min(1, 'Username is required').email('Invalid email'),
+  email: z.string().min(1, 'email is required').email('Invalid email'),
   password: z.string().min(1, 'Password is required'),
 });
 
@@ -19,7 +19,7 @@ export default function LoginView() {
   const methods = useForm<FormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      username: 'demo@demo.com',
+      email: 'demo@demo.com',
       password: 'demo',
     },
   });
@@ -29,7 +29,7 @@ export default function LoginView() {
   const onSubmit = handleSubmit(async (data: FormData) => {
     try {
       const result = await login({
-        username: data.username,
+        email: data.email,
         password: data.password,
       });
       if (result && 'error' in result) {
@@ -49,7 +49,7 @@ export default function LoginView() {
   return (
     <FormProvider methods={methods} onSubmit={onSubmit}>
       <div className="space-y-6">
-        <RHFTextField name="username" label="Email" type="email" />
+        <RHFTextField name="email" label="Email" type="email" />
         <RHFTextField name="password" label="Password" type="password" />
         <Button type="submit" className="w-full" disabled={methods.formState.isSubmitting}>
           {methods.formState.isSubmitting ? 'Logging in...' : 'Log In'}
