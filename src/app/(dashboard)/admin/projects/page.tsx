@@ -1,5 +1,10 @@
+import Container from '@/layouts/dashboard/Container';
 import React from 'react';
 
 export default function ProjectsPage() {
-  return <div>Projects Page</div>;
+  return (
+    <Container title="Projects" breadcrumbs={[{ label: 'Projects' }]}>
+      <div>Projects</div>
+    </Container>
+  );
 }

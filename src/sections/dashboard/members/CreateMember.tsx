@@ -19,6 +19,7 @@ import {
   TagIcon,
   FileTextIcon,
   DollarSignIcon,
+  BriefcaseBusiness,
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -114,17 +115,31 @@ export default function CreateMember() {
                 />
               </div>
 
-              <RHFTextField
-                label="Email"
-                leftIcon={
-                  <MailIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
-                }
-                id="email"
-                type="email"
-                className="pl-10"
-                placeholder="john.doe@example.com"
-                name="email"
-              />
+              <div className="grid grid-cols-2 gap-4">
+                <RHFTextField
+                  label="Email"
+                  leftIcon={
+                    <MailIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                  }
+                  id="email"
+                  type="email"
+                  className="pl-10"
+                  placeholder="john.doe@example.com"
+                  name="email"
+                />
+
+                <RHFTextField
+                  label="Position"
+                  leftIcon={
+                    <BriefcaseBusiness className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                  }
+                  id="position"
+                  type="text"
+                  className="pl-10"
+                  placeholder="Senior Developer"
+                  name="position"
+                />
+              </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <RHFTextField
