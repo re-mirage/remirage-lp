@@ -22,14 +22,14 @@ export default function MemberCard({ member }: MemberCardProps) {
       <Card className="cursor-pointer">
         <CardHeader className="flex flex-row items-center gap-4">
           <Avatar className="w-16 h-16 rounded-full">
-            <AvatarImage src={member.avatar} alt={member.firstName} />
+            <AvatarImage src={member.avatar} alt={member.first_name} />
             <AvatarFallback>
-              {member.firstName.charAt(0) + member.lastName.charAt(0)}
+              {member.first_name.charAt(0) + member.last_name.charAt(0)}
             </AvatarFallback>
           </Avatar>
           <div>
             <CardTitle>
-              {member.firstName} {member.lastName}
+              {member.first_name} {member.last_name}
             </CardTitle>
             <CardDescription>{member.role}</CardDescription>
           </div>
