@@ -8,7 +8,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
@@ -18,13 +17,13 @@ import Stack from '@/components/containers/Stack';
 import { paths } from '@/routes/paths';
 
 const navigation = [
-  { title: 'Projects', href: paths.projects.root() },
-  { title: 'Team', href: paths.team.root() },
-  { title: 'Solution', href: '/solution' },
-  { title: 'Resources', href: '/resources' },
-  { title: 'Pricing', href: '/pricing' },
-  { title: 'Blog', href: '/blog' },
-  { title: 'Contact Us', href: '/contact' },
+  { title: 'Projects', href: paths.landing.projects.root() },
+  { title: 'Team', href: paths.landing.team.root() },
+  { title: 'Solution', href: paths.landing.solution.root() },
+  { title: 'Resources', href: paths.landing.resources.root() },
+  { title: 'Pricing', href: paths.landing.pricing.root() },
+  { title: 'Blog', href: paths.landing.blog.root() },
+  { title: 'Contact Us', href: paths.landing.contact.root() },
 ];
 
 export default function Navbar() {
