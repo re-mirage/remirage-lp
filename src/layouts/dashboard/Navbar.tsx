@@ -1,3 +1,4 @@
+import logout from '@/auth/actions/logout';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -9,16 +10,13 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { paths } from '@/routes/paths';
 import { ChevronDown, LogOut, Settings, User } from 'lucide-react';
-import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const router = useRouter();
-  const logout = () => {
-    // mock for now
+  const { data } = useSession();
 
-    router.replace(paths.auth.login);
-  };
   return (
     <nav className="bg-white shadow-md p-4 flex justify-end items-center">
       <DropdownMenu>
@@ -50,7 +48,7 @@ export default function Navbar() {
             <Settings className="mr-2 h-4 w-4" />
             <span>Settings</span>
           </DropdownMenuItem>
-          <DropdownMenuItem className="hover:cursor-pointer" onClick={logout}>
+          <DropdownMenuItem className="hover:cursor-pointer" onClick={async () => await logout()}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
           </DropdownMenuItem>

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Navbar from '@/layouts/dashboard/Navbar';
+import AuthProvider from '@/auth/contexts/NextAuthProvider';
 const AnimatedSidebar = dynamic(() => import('@/layouts/dashboard/AnimatedSidebar'), {
   ssr: false,
 });
@@ -31,14 +32,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="flex flex-1">
-        <AnimatedSidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-        <div className="flex-1 flex flex-col">
-          <Navbar />
-          <main className="flex-1 p-8 bg-gray-100">{children}</main>
+    <AuthProvider>
+      <div className="flex flex-col min-h-screen">
+        <div className="flex flex-1">
+          <AnimatedSidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+          <div className="flex-1 flex flex-col">
+            <Navbar />
+            <main className="flex-1 p-8 bg-gray-100">{children}</main>
+          </div>
         </div>
       </div>
-    </div>
+    </AuthProvider>
   );
 }
