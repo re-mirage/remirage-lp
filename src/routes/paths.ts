@@ -48,28 +48,28 @@ export const paths = {
       root: () => `${ROOTS.LANDING}`,
     },
     team: {
-      root: (query?: Query) => `${ROOTS.LANDING}/team${toQuery(query)}`,
-      member: (member: string) => `${ROOTS.LANDING}/team/${member}`,
+      root: (query?: Query) => `${ROOTS.LANDING}team${toQuery(query)}`,
+      member: (member: string) => `${ROOTS.LANDING}team/${member}`,
     },
     projects: {
-      root: (query?: Query) => `${ROOTS.LANDING}/projects${toQuery(query)}`,
-      project: (project: string) => `${ROOTS.LANDING}/projects/${project}`,
+      root: (query?: Query) => `${ROOTS.LANDING}projects${toQuery(query)}`,
+      project: (project: string) => `${ROOTS.LANDING}projects/${project}`,
     },
     solution: {
-      root: (query?: Query) => `${ROOTS.LANDING}/solution${toQuery(query)}`,
+      root: (query?: Query) => `${ROOTS.LANDING}solution${toQuery(query)}`,
     },
     resources: {
-      root: (query?: Query) => `${ROOTS.LANDING}/resources${toQuery(query)}`,
+      root: (query?: Query) => `${ROOTS.LANDING}resources${toQuery(query)}`,
     },
     pricing: {
-      root: (query?: Query) => `${ROOTS.LANDING}/pricing${toQuery(query)}`,
+      root: (query?: Query) => `${ROOTS.LANDING}pricing${toQuery(query)}`,
     },
     blog: {
-      root: (query?: Query) => `${ROOTS.LANDING}/blog${toQuery(query)}`,
-      article: (article: string) => `${ROOTS.LANDING}/blog/${article}`,
+      root: (query?: Query) => `${ROOTS.LANDING}blog${toQuery(query)}`,
+      article: (article: string) => `${ROOTS.LANDING}blog/${article}`,
     },
     contact: {
-      root: (query?: Query) => `${ROOTS.LANDING}/contact${toQuery(query)}`,
+      root: (query?: Query) => `${ROOTS.LANDING}contact${toQuery(query)}`,
     },
   },
 };
