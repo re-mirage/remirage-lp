@@ -47,7 +47,7 @@ export default function Navbar() {
                         <NavigationMenuLink asChild>
                           <Link
                             href={item.href}
-                            className="text-sm font-medium text-white transition-colors hover:text-primary"
+                            className="text-sm font-medium dark:text-white transition-colors hover:text-primary"
                           >
                             {item.title}
                           </Link>

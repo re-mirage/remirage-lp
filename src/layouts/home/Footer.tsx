@@ -52,7 +52,7 @@ export const menuItems: FooterLinkColumn[] = [
 
 export default function Footer() {
   return (
-    <footer className="text-white p-6 md:p-8">
+    <footer className="dark:text-white p-6 md:p-8">
       <Separator className="my-8" />
       <div className="max-w-6xl mx-auto grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-8">
         {menuItems.map((column, index) => (
