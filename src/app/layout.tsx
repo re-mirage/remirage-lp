@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/layout/Navbar';
-import Footer from '@/layout/Footer';
-import { ThemeProvider } from '@/theme/theme-provider';
-import { footerLinks } from '@/routes/paths';
 import siteMetadata from '@/config/siteMetadata';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -56,18 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <main className="min-h-screen">{children}</main>
-          <Footer footerLinks={footerLinks} />
-        </ThemeProvider>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

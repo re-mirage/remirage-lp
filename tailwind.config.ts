@@ -104,6 +104,9 @@ const config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
         aurora: 'aurora 60s linear infinite',
       },
+      backgroundImage: {
+        'radial-faded': 'radial-gradient(circle, transparent 50%, rgba(0,0,0,0.8) 100%)',
+      },
     },
   },
   plugins: [require('tailwindcss-animate'), addVariablesForColors],
