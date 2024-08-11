@@ -1,11 +1,19 @@
 'use server';
-import { signOut } from '@/auth';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { createClient } from '../supabase/server';
 import { paths } from '@/routes/paths';
 
-export default async function logout() {
-  await signOut({
-    redirect: true,
-    redirectTo: paths.auth.login,
-  });
-  return null;
+export async function Logout() {
+  const supabase = createClient();
+
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    return {
+      error: error?.message,
+    };
+  }
+
+  revalidatePath('/', 'layout');
+  redirect(paths.auth.login);
 }
