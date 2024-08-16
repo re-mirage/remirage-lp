@@ -73,3 +73,36 @@ export const paths = {
     },
   },
 };
+
+export const FooterPaths = {
+  productServices: {
+    WebDevelopment: `${ROOTS.LANDING}#web-development`,
+    MobileDevelopment: `${ROOTS.LANDING}#mobile-development`,
+    UIUXDesign: `${ROOTS.LANDING}#ui-development`,
+    CustomSolutions: `${ROOTS.LANDING}#custom-development`,
+  },
+  resources: {
+    CaseStudies: `${ROOTS.LANDING}case-studies`,
+    EbooksGuides: `${ROOTS.LANDING}e-books`,
+    Webinars: `${ROOTS.LANDING}webinars`,
+    Blog: `${ROOTS.LANDING}blog`,
+  },
+  company: {
+    AboutUs: `${ROOTS.LANDING}about-us`,
+    Team: `${ROOTS.LANDING}team`,
+    Careers: `${ROOTS.LANDING}careers`,
+    PressMedia: `${ROOTS.LANDING}press-media`,
+  },
+  support: {
+    Documentation: `${ROOTS.LANDING}documentation`,
+    APIReference: `${ROOTS.LANDING}api-reference`,
+    CommunityForum: `${ROOTS.LANDING}community-forum`,
+    ContactSupport: `${ROOTS.LANDING}contact-support`,
+  },
+  legal: {
+    PrivacyPolicy: `${ROOTS.LANDING}privacy-policy`,
+    TermsofService: `${ROOTS.LANDING}terms-of-service`,
+    CookiePolicy: `${ROOTS.LANDING}cookie-policy`,
+    GDPRCompliance: `${ROOTS.LANDING}gdpr-compliance`,
+  },
+};
