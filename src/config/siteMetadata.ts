@@ -10,18 +10,25 @@ const siteMetadata = {
   siteLogo: '/logo/logo.png',
   socialBanner: '/meta/twitter-card.png',
   email: 'contact@remirage.com',
-  github: 'https://github.com/re-mirage',
-  x: 'https://twitter.com/re-mirage',
-  facebook: 'https://facebook.com/re-mirage',
-  youtube: 'https://youtube.com/re-mirage',
-  linkedin: 'https://www.linkedin.com/re-mirage',
-  threads: 'https://www.threads.net/re-mirage',
-  instagram: 'https://www.instagram.com/re-mirage',
+
   locale: 'en-US',
   analytics: {
     googleAnalytics: {
       googleAnalyticsId: 'G-JM5DZ68PCW',
     },
+  },
+  socials: {
+    x: 'https://www.x.com/re-mirage',
+    github: 'https://www.github.com/re-mirage',
+    facebook: 'https://www.facebook.com/re-mirage',
+    youtube: 'https://www.youtube.com/re-mirage',
+    linkedin: 'https://www.linkedin.com/re-mirage',
+    instagram: 'https://www.instagram.com/re-mirage',
+  },
+  contactInfo: {
+    address: '1234 Street Name, City Name, United States',
+    email: 'contact@remirage.com',
+    phone: '+1 (123) 456-7890',
   },
 };
 

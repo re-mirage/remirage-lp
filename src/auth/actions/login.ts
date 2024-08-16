@@ -1,45 +1,44 @@
 'use server';
-
-import { AuthError } from 'next-auth';
-import { redirect } from 'next/navigation';
-import { signIn } from '@/auth';
-import { paths } from '@/routes/paths';
 import { z } from 'zod';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { createClient } from '../supabase/server';
+import { paths } from '@/routes/paths';
 import { isRedirectError } from 'next/dist/client/components/redirect';
 
 const loginSchema = z.object({
-  email: z.string().min(1, 'Username is required'),
+  email: z.string().min(1, 'email is required').email('Invalid email'),
   password: z.string().min(1, 'Password is required'),
 });
 
-type LoginProps = z.infer<typeof loginSchema>;
+interface LoginData {
+  email: string;
+  password: string;
+}
+export async function Login(data: LoginData) {
+  const supabase = createClient();
 
-export default async function login(
-  options: LoginProps
-): Promise<{ success: boolean } | { error: string }> {
-  const { data, success, error: ZError } = loginSchema.safeParse(options);
-  if (!success || !data) {
-    const errors = ZError.errors.map((e) => e.message);
-    return { error: errors.join(', ') };
-  }
   try {
-    const result = await signIn('credentials', {
-      ...data,
-    });
-    return { success: true };
-  } catch (error) {
+    const validatedData = loginSchema.parse(data);
+
+    const { error } = await supabase.auth.signInWithPassword(validatedData);
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    revalidatePath('/', 'layout');
+    redirect(paths.dashboard.root);
+  } catch (error: any) {
+    if (error instanceof z.ZodError) {
+      return {
+        error: error.errors[0].message,
+      };
+    }
     if (isRedirectError(error)) {
       redirect(paths.dashboard.root);
     }
-    if (error instanceof AuthError) {
-      if (error.cause?.err instanceof Error) {
-        console.error({ loginError: error.cause?.err.message });
-
-        return { error: error.cause.err.message };
-      }
-    }
     return {
-      error: 'Something went wrong!',
+      error: error.message,
     };
   }
 }

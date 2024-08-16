@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
 import { z } from 'zod';
-import { useForm } from 'react-hook-form';
+import { Form, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/buttons/button';
 import { RHFTextField } from '@/components/RHF/RHFTextField';
-import login from '@/auth/actions/login';
 import FormProvider from '@/components/RHF/FormProvider';
+import { login } from '@/auth/actions/login';
 
 const loginSchema = z.object({
   email: z.string().min(1, 'email is required').email('Invalid email'),
@@ -28,10 +28,7 @@ export default function LoginView() {
 
   const onSubmit = handleSubmit(async (data: FormData) => {
     try {
-      const result = await login({
-        email: data.email,
-        password: data.password,
-      });
+      const result = await login(data);
       if (result && 'error' in result) {
         setError('root.serverError', {
           type: 'server',
