@@ -3,16 +3,18 @@ import Navbar from '@/layouts/home/Navbar';
 import { ThemeProvider } from '@/theme/theme-provider';
 import React from 'react';
 
-export default function layout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <Navbar />
-      <main className="min-h-screen">{children}</main>
-      <Footer />
+      <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </div>
     </ThemeProvider>
   );
 }

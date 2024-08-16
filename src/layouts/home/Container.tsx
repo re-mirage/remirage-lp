@@ -4,10 +4,14 @@ import React from 'react';
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
+
 export default function Container({ children, className, ...props }: ContainerProps) {
   return (
-    <main className={cn('flex flex-col items-center justify-between', className)} {...props}>
+    <div
+      className={cn('flex flex-col items-center justify-between  w-full h-full', className)}
+      {...props}
+    >
       {children}
-    </main>
+    </div>
   );
 }
