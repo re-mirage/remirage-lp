@@ -1,8 +1,9 @@
 'use client';
+
 import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import Image from 'next/image';
 import {
   Dialog,
   DialogContent,
@@ -19,7 +20,8 @@ import {
   TagIcon,
   FileTextIcon,
   DollarSignIcon,
-  BriefcaseBusiness,
+  UploadIcon,
+  XIcon,
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -36,32 +38,79 @@ import { Role } from '@/types/team';
 import { RHFTextField } from '@/components/RHF/RHFTextField';
 import { Register } from '@/auth/actions/register';
 import { MemberFormData, memberSchema } from '@/validations/createMember';
+import { uploadAvatar } from '@/auth/actions/uploadAvatar';
 
 export default function CreateMember() {
   const [isOpen, setOpen] = useState(false);
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [skillInput, setSkillInput] = useState('');
+
   const methods = useForm<MemberFormData>({
     resolver: zodResolver(memberSchema),
     defaultValues: {
+      first_name: '',
+      last_name: '',
       username: '',
       email: '',
       password: '',
       confirmPassword: '',
-      first_name: '',
-      last_name: '',
       role: Role.DEVELOPER,
       skills: [],
       bio: '',
-      rate: 0,
+      rate: '0',
+      avatar_url: '',
+      position: '',
     },
   });
 
+  const { control, setValue, watch } = methods;
+
   const onSubmit = async (data: MemberFormData) => {
+    console.log('Submitting data:', data);
     try {
-      await Register(data);
+      let avatarUrl = '';
+      if (avatarFile) {
+        avatarUrl = await uploadAvatar(avatarFile);
+      }
+      await Register({ ...data, avatar_url: avatarUrl });
+      setOpen(false);
     } catch (error) {
-      console.log(error);
+      console.error('Error during registration:', error);
     }
-    setOpen(false);
+  };
+
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setAvatarFile(e.target.files[0]);
+    }
+  };
+
+  const skills = watch('skills');
+
+  const handleSkillInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSkillInput(e.target.value);
+  };
+
+  const handleSkillInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      addSkill();
+    }
+  };
+
+  const addSkill = () => {
+    const trimmedSkill = skillInput.trim();
+    if (trimmedSkill && !skills.includes(trimmedSkill)) {
+      setValue('skills', [...skills, trimmedSkill]);
+      setSkillInput('');
+    }
+  };
+
+  const removeSkill = (skillToRemove: string) => {
+    setValue(
+      'skills',
+      skills.filter((skill) => skill !== skillToRemove)
+    );
   };
 
   return (
@@ -77,6 +126,37 @@ export default function CreateMember() {
           </DialogHeader>
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <Input
+                    id="avatar"
+                    type="file"
+                    onChange={handleAvatarChange}
+                    accept="image/*"
+                    className="hidden"
+                  />
+                  <Label
+                    htmlFor="avatar"
+                    className="cursor-pointer flex items-center justify-center w-24 h-24 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                  >
+                    {avatarFile ? (
+                      <Image
+                        width={96}
+                        height={96}
+                        src={URL.createObjectURL(avatarFile)}
+                        alt="Avatar preview"
+                        className="w-full h-full object-cover rounded-full"
+                      />
+                    ) : (
+                      <UploadIcon className="h-8 w-8 text-gray-400" />
+                    )}
+                  </Label>
+                  <span className="text-sm text-gray-500">
+                    {avatarFile ? avatarFile.name : 'Upload an avatar'}
+                  </span>
+                </div>
+              </div>
+
               <div className="grid grid-cols-2 gap-4">
                 <RHFTextField
                   leftIcon={
@@ -115,40 +195,16 @@ export default function CreateMember() {
                 />
 
                 <RHFTextField
-                  label="Position"
-                  leftIcon={
-                    <BriefcaseBusiness className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
-                  }
-                  id="position"
-                  type="text"
-                  className="pl-10"
-                  placeholder="Senior Developer"
-                  name="position"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <RHFTextField
                   label="Username"
+                  leftIcon={
+                    <UserIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                  }
                   id="username"
                   type="text"
+                  className="pl-10"
                   placeholder="johndoe"
                   name="username"
                 />
-
-                <div className="space-y-2">
-                  <Label htmlFor="role">Role</Label>
-                  <Select onValueChange={(value) => methods.setValue('role', value as Role)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a role" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value={Role.ADMIN}>Admin</SelectItem>
-                      <SelectItem value={Role.DEVELOPER}>Developer</SelectItem>
-                      <SelectItem value={Role.SUPPORT}>Support</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -175,16 +231,63 @@ export default function CreateMember() {
                 />
               </div>
 
+              <div className="grid grid-cols-2 gap-4">
+                <RHFTextField
+                  label="Position"
+                  leftIcon={
+                    <BriefcaseIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                  }
+                  id="position"
+                  type="text"
+                  className="pl-10"
+                  placeholder="Senior Developer"
+                  name="position"
+                />
+
+                <div className="space-y-2">
+                  <Label htmlFor="role">Role</Label>
+                  <Select onValueChange={(value) => methods.setValue('role', value as Role)}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a role" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value={Role.ADMIN}>Admin</SelectItem>
+                      <SelectItem value={Role.DEVELOPER}>Developer</SelectItem>
+                      <SelectItem value={Role.SUPPORT}>Support</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
               <div className="space-y-2">
                 <Label htmlFor="skills">Skills</Label>
                 <div className="relative">
                   <TagIcon className="absolute left-3 top-3 h-4 w-4 text-gray-500" />
-                  <Textarea
+                  <Input
                     id="skills"
-                    {...methods.register('skills')}
+                    value={skillInput}
+                    onChange={handleSkillInputChange}
+                    onKeyDown={handleSkillInputKeyDown}
                     className="pl-10"
-                    placeholder="React, Node.js, TypeScript"
+                    placeholder="Add skills (press Enter or comma to add)"
                   />
+                </div>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {skills.map((skill, index) => (
+                    <span
+                      key={index}
+                      className="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full flex items-center"
+                    >
+                      {skill}
+                      <button
+                        type="button"
+                        onClick={() => removeSkill(skill)}
+                        className="ml-1 text-blue-600 hover:text-blue-800"
+                      >
+                        <XIcon className="h-3 w-3" />
+                      </button>
+                    </span>
+                  ))}
                 </div>
               </div>
 
@@ -203,7 +306,7 @@ export default function CreateMember() {
 
               <RHFTextField
                 leftIcon={
-                  <LockIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                  <DollarSignIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                 }
                 label="Hourly Rate ($)"
                 id="rate"
@@ -216,7 +319,9 @@ export default function CreateMember() {
                 <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                   Cancel
                 </Button>
-                <Button type="submit">Save Member</Button>
+                <Button type="submit" onClick={methods.handleSubmit(onSubmit)}>
+                  Save Member
+                </Button>
               </DialogFooter>
             </form>
           </FormProvider>
