@@ -22,7 +22,6 @@ const siteMetadata = {
     github: 'https://www.github.com/re-mirage',
     facebook: 'https://www.facebook.com/re-mirage',
     youtube: 'https://www.youtube.com/re-mirage',
-    linkedin: 'https://www.linkedin.com/re-mirage',
     instagram: 'https://www.instagram.com/re-mirage',
   },
   contactInfo: {
