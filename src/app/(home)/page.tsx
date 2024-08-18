@@ -4,15 +4,18 @@ import Exampels from '@/sections/home/Exampels';
 import Hero from '@/sections/home/Hero';
 import ML from '@/sections/home/ML';
 import Technologies from '@/sections/home/Technologies';
+import { Fragment } from 'react';
 
 export default function Home() {
   return (
-    <Container>
+    <Fragment>
       <Hero />
-      <Exampels />
-      <AI />
-      <Technologies />
-      <ML />
-    </Container>
+      <Container>
+        <Exampels />
+        <AI />
+        <Technologies />
+        <ML />
+      </Container>
+    </Fragment>
   );
 }

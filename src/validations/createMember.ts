@@ -11,7 +11,9 @@ export const memberSchema = z
     role: z.nativeEnum(Role),
     skills: z.array(z.string()),
     bio: z.string(),
-    rate: z.number().min(0, 'Rate must be a positive number'),
+    rate: z.string(),
+    avatar_url: z.string(),
+    position: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
