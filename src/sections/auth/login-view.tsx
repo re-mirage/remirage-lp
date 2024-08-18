@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/buttons/button';
 import { RHFTextField } from '@/components/RHF/RHFTextField';
 import FormProvider from '@/components/RHF/FormProvider';
-import { login } from '@/auth/actions/login';
+import { Login } from '@/auth/actions/login';
 
 const loginSchema = z.object({
   email: z.string().min(1, 'email is required').email('Invalid email'),
@@ -28,7 +28,7 @@ export default function LoginView() {
 
   const onSubmit = handleSubmit(async (data: FormData) => {
     try {
-      const result = await login(data);
+      const result = await Login(data);
       if (result && 'error' in result) {
         setError('root.serverError', {
           type: 'server',
