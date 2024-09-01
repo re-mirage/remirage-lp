@@ -3,7 +3,6 @@ const nextConfig = {
   experimental: {
     reactCompiler: true,
   },
-  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts', 'xml'],
   images: {
     remotePatterns: [
       {
@@ -17,4 +16,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-// https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/4otakus/2-.jpg
