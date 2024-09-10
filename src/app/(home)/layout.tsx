@@ -9,7 +9,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
       <div className="flex flex-col min-h-screen overflow-x-hidden">
         <Navbar />
         <main className="flex-grow">{children}</main>
