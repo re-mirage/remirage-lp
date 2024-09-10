@@ -26,10 +26,10 @@ export const technologies: Technology[] = [
         src: '/technologies/swift.svg',
       },
     ],
-    content: new Array(8).fill(null).map((_, index) => ({
+    content: new Array(3).fill(null).map((_, index) => ({
       title: `Mobile content ${index + 1}`,
       description: description,
-      icon: 'smartphone',
+      icon: 'mobile',
     })),
   },
   {
@@ -55,7 +55,7 @@ export const technologies: Technology[] = [
       },
     ],
 
-    content: new Array(8).fill(null).map((_, index) => ({
+    content: new Array(3).fill(null).map((_, index) => ({
       title: `Web content ${index + 1}`,
       description: description,
       icon: 'globe',
@@ -87,7 +87,7 @@ export const technologies: Technology[] = [
         src: '/technologies/python.svg',
       },
     ],
-    content: new Array(8).fill(null).map((_, index) => ({
+    content: new Array(3).fill(null).map((_, index) => ({
       title: `Backend content ${index + 1}`,
       description: description,
       icon: 'server',
@@ -117,7 +117,7 @@ export const technologies: Technology[] = [
       },
     ],
 
-    content: new Array(8).fill(null).map((_, index) => ({
+    content: new Array(3).fill(null).map((_, index) => ({
       title: `Devops content ${index + 1}`,
       description: description,
       icon: 'workflow',
@@ -141,7 +141,7 @@ export const technologies: Technology[] = [
         src: '/technologies/pandas.svg',
       },
     ],
-    content: new Array(8).fill(null).map((_, index) => ({
+    content: new Array(3).fill(null).map((_, index) => ({
       title: `Machine Learning content ${index + 1}`,
       description: description,
       icon: 'bot',
@@ -173,7 +173,7 @@ export const technologies: Technology[] = [
         src: '/technologies/neo4j.svg',
       },
     ],
-    content: new Array(8).fill(null).map((_, index) => ({
+    content: new Array(3).fill(null).map((_, index) => ({
       title: `Database content ${index + 1}`,
       description: description,
       icon: 'database',

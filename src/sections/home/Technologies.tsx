@@ -1,104 +1,349 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import SectionContainer from '@/components/containers/SectionContainer';
-import Image from 'next/image';
-import Stack from '@/components/containers/Stack';
-import { getTechnologies } from '@/actions/home/getTechnologies';
 import {
-  Mail,
-  Phone,
-  Webcam,
-  RibbonIcon,
-  Smartphone,
-  Globe,
-  Server,
-  Bot,
-  Workflow,
-  Database,
-} from 'lucide-react';
+  FaMobile,
+  FaGlobe,
+  FaServer,
+  FaRobot,
+  FaCogs,
+  FaDatabase,
+  FaChartBar,
+  FaShieldAlt,
+  FaCode,
+  FaCloud,
+  FaAws
+} from 'react-icons/fa';
+import {
+  SiReact,
+  SiAndroid,
+  SiApple,
+  SiSwift,
+  SiVuedotjs,
+  SiNextdotjs,
+  SiTypescript,
+  SiNodedotjs,
+  SiNestjs,
+  SiExpress,
+  SiDjango,
+  SiPython,
+  SiDocker,
+  SiKubernetes,
+  SiJenkins,
+  SiGithubactions,
+  SiTensorflow,
+  SiPytorch,
+  SiPandas,
+  SiPostgresql,
+  SiMongodb,
+  SiMysql,
+  SiSqlite,
+  SiNeo4J,
+  SiVercel,
+  SiExpo,
+  SiKotlin,
+  SiHtml5,
+  SiShadcnui,
+  SiMui,
+  SiTailwindcss,
+  SiCss3,
+  SiAngular,
+  SiSass,
+  SiWebassembly,
+  SiGraphql,
+  SiTerraform,
+  SiRust,
+  SiElasticsearch,
+  SiWireshark,
+  SiMetasploit,
+  SiKalilinux,
+  SiBurpsuite,
+} from 'react-icons/si';
+import { IconType } from 'react-icons/lib';
+import { Technology } from '@/types/home';
 
-const Icons = {
-  smartphone: <Smartphone className="h-6 w-6" />,
-  globe: <Globe className="h-6 w-6" />,
-  server: <Server className="h-6 w-6" />,
-  bot: <Bot className="h-6 w-6" />,
-  workflow: <Workflow className="h-6 w-6" />,
-  database: <Database className="h-6 w-6" />,
-};
+
+
+const technologies = [
+  {
+    value: 'mobile',
+    title: 'Mobile Solutions',
+    description: 'Cutting-edge mobile app development',
+    techLogos: [
+      { name: 'iOS', icon: SiApple },
+      { name: 'Android', icon: SiAndroid },
+      { name: 'React Native', icon: SiReact },
+      { name: 'Expo', icon: SiExpo },
+      { name: 'Swift', icon: SiSwift },
+      { name: 'Kotlin', icon: SiKotlin },
+    ],
+    content: [
+      {
+        title: 'Cross-Platform Excellence',
+        description: "Develop apps that work seamlessly on both iOS and Android, maximizing your market reach.",
+        icon: FaMobile
+      },
+      {
+        title: 'Native Performance',
+        description: "Harness the full power of device capabilities with native app development for unparalleled performance.",
+        icon: FaMobile
+      },
+      {
+        title: 'Innovative UI/UX',
+        description: "Create intuitive, engaging mobile interfaces that keep users coming back for more.",
+        icon: FaMobile
+      },
+    ],
+  },
+  {
+    value: 'web',
+    title: 'Web Development',
+    description: 'Powerful, responsive web applications',
+    techLogos: [
+      { name: 'React', icon: SiReact },
+      { name: 'Next.js', icon: SiNextdotjs },
+      { name: 'Vue.js', icon: SiVuedotjs },
+      { name: "Angular", icon: SiAngular },
+      { name: 'TypeScript', icon: SiTypescript },
+      { name: 'Shadcnui', icon: SiShadcnui },
+      { name: "Material UI", icon: SiMui },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: 'Sass', icon: SiSass },
+      { name: "HTML5", icon: SiHtml5 },
+      { name: 'CSS3', icon: SiCss3 },
+      { name: "WebAssembly", icon: SiWebassembly },
+    ],
+    content: [
+      {
+        title: 'Dynamic Single Page Apps',
+        description: "Build lightning-fast, interactive web applications that provide a seamless user experience.",
+        icon: FaGlobe
+      },
+      {
+        title: 'Progressive Web Apps',
+        description: "Develop web apps that work offline and feel like native apps, combining the best of both worlds.",
+        icon: FaGlobe
+      },
+      {
+        title: 'Responsive Design',
+        description: "Ensure your web presence looks and works great on all devices, from phones to desktops.",
+        icon: FaGlobe
+      },
+    ],
+  },
+  {
+    value: 'backend',
+    title: 'Backend Development',
+    description: 'Robust server-side solutions',
+    techLogos: [
+      { name: 'Node.js', icon: SiNodedotjs },
+      { name: 'Rust', icon: SiRust },
+      { name: 'TypeScript', icon: SiTypescript },
+      { name: 'Python', icon: SiPython },
+      { name: 'Express', icon: SiExpress },
+      { name: 'NestJS', icon: SiNestjs },
+      { name: 'Django', icon: SiDjango },
+      { name: 'GraphQL', icon: SiGraphql },
+
+    ],
+    content: [
+      {
+        title: 'Scalable Microservices',
+        description: "Design and implement flexible, scalable backend architectures to support growing businesses.",
+        icon: FaServer
+      },
+      {
+        title: 'Real-time Processing',
+        description: "Build systems capable of handling real-time data processing for immediate insights and actions.",
+        icon: FaServer
+      },
+      {
+        title: 'API Development',
+        description: "Create robust, well-documented APIs that enable seamless integration with various platforms and services.",
+        icon: FaServer
+      },
+    ],
+  },
+  {
+    value: 'devops',
+    title: 'DevOps & Cloud',
+    description: 'Streamlined deployment and operations',
+    techLogos: [
+      { name: 'Docker', icon: SiDocker },
+      { name: 'AWS', icon: FaAws },
+      { name: 'Kubernetes', icon: SiKubernetes },
+      { name: 'Github Actions', icon: SiGithubactions },
+      { name: 'Jenkins', icon: SiJenkins },
+      { name: 'Terraform', icon: SiTerraform },
+    ],
+    content: [
+      {
+        title: 'Continuous Integration/Deployment',
+        description: "Implement CI/CD pipelines for faster, more reliable software delivery and updates.",
+        icon: FaCogs
+      },
+      {
+        title: 'Cloud-Native Solutions',
+        description: "Leverage the full potential of cloud platforms for scalability, reliability, and cost-efficiency.",
+        icon: FaCloud
+      },
+      {
+        title: 'Infrastructure as Code',
+        description: "Automate infrastructure provisioning and management for consistent, reproducible environments.",
+        icon: FaCode
+      },
+    ],
+  },
+  {
+    value: 'data',
+    title: 'Data & Analytics',
+    description: 'Unlock the power of your data',
+    techLogos: [
+      { name: 'MongoDB', icon: SiMongodb },
+      { name: 'Neo4j', icon: SiNeo4J },
+      { name: 'PostgreSQL', icon: SiPostgresql },
+      { name: 'Pandas', icon: SiPandas },
+      { name: 'TensorFlow', icon: SiTensorflow },
+      { name: 'Elasticsearch', icon: SiElasticsearch },
+    ],
+    content: [
+      {
+        title: 'Big Data Processing',
+        description: "Handle and analyze large-scale datasets to extract valuable business insights.",
+        icon: FaDatabase
+      },
+      {
+        title: 'Business Intelligence Dashboards',
+        description: "Create interactive, real-time dashboards for data-driven decision making.",
+        icon: FaChartBar
+      },
+      {
+        title: 'Predictive Analytics',
+        description: "Implement machine learning models to forecast trends and inform strategic planning.",
+        icon: FaRobot
+      },
+    ],
+  },
+  {
+    value: 'security',
+    title: 'Cybersecurity',
+    description: 'Protect your digital assets',
+    techLogos: [
+      { name: 'Wireshark', icon: SiWireshark },
+      { name: 'Metasploit', icon: SiMetasploit },
+      { name: 'Kali Linux', icon: SiKalilinux },
+      { name: 'Burp Suite', icon: SiBurpsuite },
+    ],
+    content: [
+      {
+        title: 'Secure Development Practices',
+        description: "Implement security-first development methodologies to build robust, hack-resistant systems.",
+        icon: FaShieldAlt
+      },
+      {
+        title: 'Encryption & Data Protection',
+        description: "Ensure the confidentiality and integrity of your sensitive data with state-of-the-art encryption.",
+        icon: FaShieldAlt
+      },
+      {
+        title: 'Security Audits & Compliance',
+        description: "Conduct thorough security assessments and ensure compliance with industry standards and regulations.",
+        icon: FaShieldAlt
+      },
+    ],
+  },
+];
+
+
 interface TechCardProps {
-  icon: keyof typeof Icons;
+  Icon: IconType;
   title: string;
   content: string;
 }
 
-const TechCard = ({ icon, title, content }: TechCardProps) => (
-  <div className="py-4 border-r border-l border-b border-white/20 relative group">
-    <div className="absolute inset-0 bg-gradient-to-b from-primary/0 via-primary/20 to-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
-    <div className="relative z-10">
-      <div className="px-4 flex items-start mb-2">{Icons[icon]}</div>
-      <h3 className="text-lg font-semibold group-hover:underline decoration-white decoration-2  border-l-2 border-transparent">
-        <span className="px-4  border-l-2 border-current pl-3">{title}</span>
-      </h3>
-      <p className="px-4  text-gray-400">{content}</p>
-    </div>
-  </div>
-);
+const TechCard = ({ Icon, title, content }: TechCardProps) => {
+  return (
+    <motion.div
+      className="p-6 bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
 
-export default async function TechnologiesSection() {
-  const technologies = await getTechnologies();
+      <Icon className="h-8 w-8 text-primary mb-4" />
+      <h3 className="text-xl font-semibold mb-2 text-white">{title}</h3>
+      <p className="text-gray-300">{content}</p>
+    </motion.div>
+  );
+};
+
+export default function TechnologiesSection() {
+  const [activeTab, setActiveTab] = useState<Technology['value']>('mobile');
+
+
   return (
     <SectionContainer>
-      <h2 className="text-3xl font-medium text-center py-8 text-white">
-        Technologies we work with
-      </h2>
-      <Tabs defaultValue={technologies[0].value} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 sm:grid-cols-6 mb-8">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl font-bold text-center py-12 text-white"
+      >
+        Technologies We Work With
+      </motion.h2>
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="flex flex-wrap justify-center gap-4 mb-12 ">
           {technologies.map((technology) => (
-            <TabsTrigger key={technology.value} value={technology.value}>
+            <TabsTrigger
+              key={technology.value}
+              value={technology.value}
+              className="px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 ease-in-out bg-gray-800 hover:bg-gray-700 text-white"
+            >
               {technology.title}
             </TabsTrigger>
           ))}
         </TabsList>
-        {technologies.map((technology) => (
-          <TabsContent key={technology.value} value={technology.value}>
-            <div className="space-y-8">
-              <div className="grid grid-cols-2 sm:grid-cols-4 items-center py-2 md:py-12 gap-4">
-                {technology.techLogos.map((logo) => (
-                  <Stack
-                    key={logo.name}
-                    direction="column"
-                    spacing={3}
-                    className="transform hover:scale-125 duration-300"
-                  >
-                    <Image
-                      src={logo.src}
-                      alt={logo.name}
-                      className="w-16 h-16 object-contain self-center"
-                      color="white"
-                      height={32}
-                      width={32}
-                    />
-                    <p className="text-center text-white">{logo.name}</p>
-                  </Stack>
-                ))}
-              </div>
-              <div className="relative overflow-x-auto">
-                <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-black to-transparent z-10"></div>
-                <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-black to-transparent z-10"></div>
-                <div className="grid grid-cols-2 sm:grid-cols-4">
+        <AnimatePresence mode="wait">
+          {technologies.map((technology) => (
+            <TabsContent key={technology.value} value={technology.value}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-12  "
+              >
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center ">
+                  {technology.techLogos.map((logo) => {
+                    const TechIcon = logo.icon || FaGlobe;
+                    return (
+                      <motion.div
+                        key={logo.name}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="flex flex-col"
+                      >
+                        <TechIcon className="w-16 h-16 text-primary mb-2" />
+                        <p className="text-center text-white text-sm">{logo.name}</p>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {technology.content.map((card) => (
                     <TechCard
                       key={card.title}
-                      icon={card.icon as keyof typeof Icons}
+                      Icon={card.icon}
                       title={card.title}
                       content={card.description}
                     />
                   ))}
                 </div>
-              </div>
-            </div>
-          </TabsContent>
-        ))}
+              </motion.div>
+            </TabsContent>
+          ))}
+        </AnimatePresence>
       </Tabs>
     </SectionContainer>
   );

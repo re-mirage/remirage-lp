@@ -65,7 +65,7 @@ export default function Navbar() {
             <Button variant="default" size="sm" onClick={() => router.push('/contact')}>
               Schedule a consultation
             </Button>
-            <ModeToggle />
+            {/* <ModeToggle /> */}
           </div>
 
           {/* Mobile menu button */}
@@ -106,9 +106,9 @@ export default function Navbar() {
                 Schedule a consultation
               </Button>
             </div>
-            <div className="mt-3 flex justify-center">
+            {/* <div className="mt-3 flex justify-center">
               <ModeToggle />
-            </div>
+            </div> */}
           </div>
         </div>
       )}

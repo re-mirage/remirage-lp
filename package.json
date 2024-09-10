@@ -21,6 +21,8 @@
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
+    "@react-three/drei": "^9.112.0",
+    "@react-three/fiber": "^8.17.7",
     "@supabase/ssr": "^0.4.0",
     "@supabase/supabase-js": "^2.45.1",
     "@tsparticles/engine": "^3.5.0",
@@ -38,12 +40,14 @@
     "react": "rc",
     "react-dom": "rc",
     "react-hook-form": "^7.52.1",
+    "react-icons": "^5.3.0",
     "react-lottie": "^1.2.4",
     "react-lottie-player": "^2.0.0",
     "recharts": "^2.13.0-alpha.4",
     "simplex-noise": "^4.0.1",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.168.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
