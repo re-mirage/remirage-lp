@@ -60,17 +60,7 @@ const serviceCategories: ServiceCategory[] = [
   },
 ]
 
-const clients = [
-  { name: 'Egaliti', logo: '/projects/egaliti/egaliti-logo.png' },
-  { name: 'Advancia', logo: '/projects/advancia/advancia-logo.png' },
-  { name: 'Fair Finance', logo: '/projects/fairfinance/fairfinance-logo.png' },
-  { name: 'Neeb', logo: '/projects/neeb/neeb-logo.svg' },
-  { name: '4Otakus', logo: '/projects/4otakus/4otakus-logo.png' },
-  { name: 'Datawars', logo: '/projects/datawars/datawars-logo.png' },
-  { name: "Master Drain", logo: "/projects/masterdrain/masterdrain-logo.png" },
-  { name: "Jedicoin", logo: "/projects/jedicoin/jedicoin-logo.png" },
-  { name: "Porthos", logo: "/projects/porthos/porthos-logo.svg" },
-]
+
 
 const ServiceShowcase: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -191,38 +181,6 @@ const ServiceShowcase: React.FC = () => {
           />
         ))}
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
-        className="mt-24"
-      >
-        <h3 className="text-3xl font-bold text-center mb-12">Our Clients</h3>
-        <div className="relative overflow-hidden">
-          <motion.div
-            animate={{ x: [0, '-100%'] }}
-            transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-            className="flex space-x-12"
-          >
-            {[...clients, ...clients].map((client, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.1 }}
-                className="flex-shrink-0 w-32 h-32 flex items-center justify-center"
-              >
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  width={100}
-                  height={100}
-                  className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.div>
     </SectionContainer>
   )
 }
