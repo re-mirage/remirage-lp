@@ -63,6 +63,7 @@ import {
 } from 'react-icons/si';
 import { IconType } from 'react-icons/lib';
 import { Technology } from '@/types/home';
+import SectionHeadline from '@/components/SectionHeadline';
 
 
 
@@ -71,6 +72,7 @@ const technologies = [
     value: 'mobile',
     title: 'Mobile Solutions',
     description: 'Cutting-edge mobile app development',
+    icon: FaMobile,
     techLogos: [
       { name: 'iOS', icon: SiApple },
       { name: 'Android', icon: SiAndroid },
@@ -101,6 +103,7 @@ const technologies = [
     value: 'web',
     title: 'Web Development',
     description: 'Powerful, responsive web applications',
+    icon: FaGlobe,
     techLogos: [
       { name: 'React', icon: SiReact },
       { name: 'Next.js', icon: SiNextdotjs },
@@ -137,6 +140,7 @@ const technologies = [
     value: 'backend',
     title: 'Backend Development',
     description: 'Robust server-side solutions',
+    icon: FaServer,
     techLogos: [
       { name: 'Node.js', icon: SiNodedotjs },
       { name: 'Rust', icon: SiRust },
@@ -170,6 +174,7 @@ const technologies = [
     value: 'devops',
     title: 'DevOps & Cloud',
     description: 'Streamlined deployment and operations',
+    icon: FaCogs,
     techLogos: [
       { name: 'Docker', icon: SiDocker },
       { name: 'AWS', icon: FaAws },
@@ -200,6 +205,7 @@ const technologies = [
     value: 'data',
     title: 'Data & Analytics',
     description: 'Unlock the power of your data',
+    icon: FaDatabase,
     techLogos: [
       { name: 'MongoDB', icon: SiMongodb },
       { name: 'Neo4j', icon: SiNeo4J },
@@ -230,6 +236,7 @@ const technologies = [
     value: 'security',
     title: 'Cybersecurity',
     description: 'Protect your digital assets',
+    icon: FaShieldAlt,
     techLogos: [
       { name: 'Wireshark', icon: SiWireshark },
       { name: 'Metasploit', icon: SiMetasploit },
@@ -284,25 +291,26 @@ export default function TechnologiesSection() {
 
   return (
     <SectionContainer>
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl font-bold text-center py-12 text-white"
-      >
+
+
+      <SectionHeadline >
         Technologies We Work With
-      </motion.h2>
+      </SectionHeadline>
+
+
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="flex flex-wrap justify-center gap-4 mb-12 ">
-          {technologies.map((technology) => (
-            <TabsTrigger
-              key={technology.value}
-              value={technology.value}
-              className="px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 ease-in-out bg-gray-800 hover:bg-gray-700 text-white"
-            >
-              {technology.title}
-            </TabsTrigger>
-          ))}
+        <TabsList className="justify-center gap-4 mb-12 grid grid-cols-3 md:grid-cols-6">
+          {technologies.map((technology) => {
+            const Icon = technology.icon;
+            return (
+              <TabsTrigger key={technology.title} value={technology.value} className="flex flex-col rounded-lg text-sm font-medium transition-all duration-200 ease-in-out  hover:bg-gray-700 text-white">
+                <Icon className="w-8 h-8 text-primary-300" />
+                <span className="mt-2 text-xs">{technology.title}</span>
+              </TabsTrigger>
+
+
+            )
+          })}
         </TabsList>
         <AnimatePresence mode="wait">
           {technologies.map((technology) => (
@@ -322,7 +330,8 @@ export default function TechnologiesSection() {
                         key={logo.name}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="flex flex-col"
+                        className="flex flex-col justify-center items-center"
+                        title={logo.name}
                       >
                         <TechIcon className="w-16 h-16 text-primary mb-2" />
                         <p className="text-center text-white text-sm">{logo.name}</p>
