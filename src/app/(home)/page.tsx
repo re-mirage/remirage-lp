@@ -1,6 +1,6 @@
 import Container from '@/layouts/home/Container';
 import AI from '@/sections/home/AI';
-import Exampels from '@/sections/home/Exampels';
+import Expertise from '@/sections/home/Expertise';
 import Hero from '@/sections/home/Hero';
 import ML from '@/sections/home/ML';
 import OurClients from '@/sections/home/OurClients';
@@ -12,7 +12,7 @@ export default function Home() {
     <Fragment>
       <Hero />
       <Container>
-        <Exampels />
+        <Expertise />
         <AI />
         <Technologies />
         <ML />
