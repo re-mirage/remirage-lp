@@ -10,6 +10,7 @@ import TextGenerateEffect from '@/components/text/text-generate-effect';
 import { Button } from '@/components/buttons/button';
 import aiAnimation from '@/data/ai.json';
 import dynamic from 'next/dynamic';
+import SectionHeadline from '@/components/SectionHeadline';
 
 const AISection = () => {
   return (
@@ -21,9 +22,11 @@ const AISection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-white mb-6">
+
+
+          <SectionHeadline >
             <TextGenerateEffect words="Revolutionize Your Business with AI" />
-          </h2>
+          </SectionHeadline>
           <p className="text-xl text-gray-300 mb-8">
             Harness the power of cutting-edge Machine Learning and AI to transform your operations
             and drive innovation.

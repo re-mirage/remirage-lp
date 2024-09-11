@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import SectionContainer from "@/components/containers/SectionContainer";
 import Link from "next/link";
+import SectionHeadline from "@/components/SectionHeadline";
 
 const clients = [
     { name: 'Egaliti', logo: '/projects/egaliti/egaliti-logo.png', url: 'https://egaliti.com' },
@@ -26,7 +27,14 @@ export default function OurClients() {
                 transition={{ delay: 0.8, duration: 0.5 }}
                 className="my-24"
             >
-                <h3 className="text-3xl font-bold text-center mb-12">Our Clients</h3>
+
+
+                <SectionHeadline >
+                    Our Clients
+                </SectionHeadline>
+
+
+
                 <div className="relative overflow-hidden p-4">
                     <motion.div
                         animate={{ x: [0, '-100%'] }}

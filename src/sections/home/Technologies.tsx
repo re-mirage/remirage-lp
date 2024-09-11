@@ -63,6 +63,7 @@ import {
 } from 'react-icons/si';
 import { IconType } from 'react-icons/lib';
 import { Technology } from '@/types/home';
+import SectionHeadline from '@/components/SectionHeadline';
 
 
 
@@ -290,21 +291,20 @@ export default function TechnologiesSection() {
 
   return (
     <SectionContainer>
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl font-bold text-center py-12 text-white"
-      >
+
+
+      <SectionHeadline >
         Technologies We Work With
-      </motion.h2>
+      </SectionHeadline>
+
+
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="justify-center gap-4 mb-12 grid grid-cols-3 md:grid-cols-6">
           {technologies.map((technology) => {
             const Icon = technology.icon;
             return (
               <TabsTrigger key={technology.title} value={technology.value} className="flex flex-col rounded-lg text-sm font-medium transition-all duration-200 ease-in-out  hover:bg-gray-700 text-white">
-                <Icon className="w-8 h-8 text-primary" />
+                <Icon className="w-8 h-8 text-primary-300" />
                 <span className="mt-2 text-xs">{technology.title}</span>
               </TabsTrigger>
 
