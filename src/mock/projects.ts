@@ -35,10 +35,15 @@ export enum Category {
 }
 
 
+
+
+
 const projects: Project[] = [
   {
     id: '1',
     title: 'Advancia',
+    logo: '/projects/advancia/advancia-logo.png',
+    url: 'https://apps.apple.com/jp/app/advancia/id6473286747?l=en-US',
     description:
       'Advancia is a cutting-edge salary advance service that empowers employees with financial control and provides powerful management tools for employers. The platform offers on-demand advances, multi-platform support, intelligent payroll management, and financial guidance, all while prioritizing security and compliance.',
     category: [Category.Mobile, Category.Web, Category.backend, Category.serverless],
@@ -60,6 +65,8 @@ const projects: Project[] = [
     title: 'Egaliti',
     description:
       'Egaliti is an innovative e-banking platform designed for businesses, offering a secure and efficient way to manage cross-border financial operations. Features include a mobile app, web application, MLRO portal, bulk payment system, and B2B API integration, built on a cutting-edge technology stack.',
+    logo: '/projects/egaliti/egaliti-logo.png',
+    url: 'https://egaliti.com',
     category: [Category.Mobile, Category.Web, Category.backend, Category.serverless],
     images: [
       'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/egaliti/1-web.png',
@@ -91,6 +98,8 @@ const projects: Project[] = [
     title: 'Fair Finance',
     description:
       'Fair Finance provides a customized dashboard solution that empowers departments to analyze, visualize, and act on business data with ease. The platform features a dynamic widget-based interface, multi-database integration, and department-specific insights, all delivered through a responsive and user-centric design.',
+    logo: '/projects/fairfinance/fairfinance-logo.png',
+    url: 'https://fairfinance.org.uk/',
     category: [Category.Web, Category.AI, Category.backend],
     images: [
       'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/fairfinance/1.png',
@@ -107,17 +116,21 @@ const projects: Project[] = [
     title: 'Master Drain',
     description:
       'Master Drain is a task management platform designed for service-oriented businesses. It automates operations with smart task assignment, automated invoicing, and comprehensive analytics, all delivered through a responsive, user-friendly interface.',
+    logo: "/projects/masterdrain/masterdrain-logo.png",
+    url: "http://www.mstdrain.co.uk/",
     category: [Category.Web, Category.backend],
     images: ['https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/masterdrain/1.png', 'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/masterdrain/2.png'],
     thumbnail: 'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/masterdrain/thumbnail.png',
     technologies: [Technology.NextJS, Technology.MongoDB, Technology.NodeJS, Technology.WebSocket],
-    team: [team[0], team[1], team[3]],
+    team: [team[0], team[1]],
   },
   {
     id: '5',
     title: 'Neeb App',
     description:
       'Neeb App is a social network platform designed exclusively for flight crews. It offers secure, professional communication tools, including QR code privacy, flight-specific groups, real-time interaction, and an intuitive user experience.',
+    logo: '/projects/neeb/neeb-logo.svg',
+    url: 'https://neeb.app/',
     category: [Category.Mobile, Category.Web],
     images: [
       'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/neeb/1.png',
@@ -139,6 +152,9 @@ const projects: Project[] = [
     title: '4Otakus',
     description:
       '4Otakus is a streaming app tailored specifically for anime enthusiasts. It offers a vast library of anime series and movies with high-quality streaming, multi-platform support, and user-friendly navigation, ensuring an immersive experience for all anime fans.',
+    logo: '/projects/4otakus/4otakus-logo.png',
+    url: 'https://4otakus.com',
+
     category: [Category.Mobile, Category.Web],
     images: [
       'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/4otakus/1-.jpg',
@@ -153,6 +169,8 @@ const projects: Project[] = [
     title: 'Datawars',
     description:
       'Datawars is a unique meme cryptocurrency project built on top of Ethereum using Solidity. It includes a mobile app that allows users to mine tokens based on their data usage. The more data you use, the more tokens you earn, blending cryptocurrency and data usage into a gamified experience.',
+    logo: '/projects/datawars/datawars-logo.png',
+    url: 'https://datawars.space/',
     category: [Category.Crypto, Category.Mobile, Category.Web],
     images: [
       'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/datawars/1-mobile.png',
@@ -179,6 +197,8 @@ const projects: Project[] = [
     title: 'Jedicoin',
     description:
       'Jedicoin is a meme cryptocurrency inspired by the Star Wars universe, built on top of Ethereum using Solidity. The project offers a playful and community-driven approach to cryptocurrency, aiming to bring together fans of the Star Wars franchise and crypto enthusiasts.',
+    logo: "/projects/jedicoin/jedicoin-logo.png",
+    url: "https://jedicoin.io/",
     category: [Category.Crypto],
     images: [
       'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/jedicoin/1.png',
@@ -190,6 +210,18 @@ const projects: Project[] = [
     thumbnail: 'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/jedicoin/thumbnail.png',
     technologies: [Technology.Solidity, Technology.Ethereum],
     team: [team[0]],
+  }, {
+    id: '9',
+    title: 'Porthos',
+    description:
+      'Porthos is a unique platform that offers a comprehensive solution for managing and optimizing the financial operations of businesses. It includes features such as automated invoicing, smart task assignment, and detailed analytics, all delivered through a user-friendly interface.',
+    logo: "/projects/porthos/porthos-logo.svg",
+    url: "https://www.porthos.co/",
+    category: [Category.Web, Category.backend],
+    images: [],
+    thumbnail: "",
+    technologies: [Technology.NextJS, Technology.MongoDB, Technology.NodeJS, Technology.WebSocket],
+    team: [team[0], team[1]],
   }
 ];
 

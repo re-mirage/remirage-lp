@@ -4,9 +4,10 @@ export interface Project {
   id: string;
   title: string;
   description?: string;
+  logo: string;
   images: string[];
   thumbnail: string;
-  url?: string;
+  url: string;
   technologies: string[];
   team: Member[];
   category: string[];
