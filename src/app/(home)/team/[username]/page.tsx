@@ -9,11 +9,14 @@ import MemberProfile from '@/sections/team/MemberProfile';
 
 
 export default async function TeamMemberPage({ params }: { params: { username: string } }) {
-  const member = await getMember(params.username);
+  const { username } = params;
+  const member = await getMember(username);
   if (!member) {
     notFound();
   }
-  const projects = await getProjects();
+  const projects = await getProjects({
+    team: username,
+  });
   const memberProjects = projects.filter(project => project.team.some(m => m.username === member.username));
 
   return (

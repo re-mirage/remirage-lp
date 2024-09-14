@@ -30,8 +30,6 @@ export enum Category {
   serverless = 'Serverless',
   AI = 'AI',
   Crypto = 'Crypto'
-
-
 }
 
 

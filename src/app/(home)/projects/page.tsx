@@ -1,8 +1,9 @@
 import React from 'react';
 
-import projects from '@/mock/projects';
-import { ProjectsList } from '@/sections/projects/ProjectsList';
+// import projects from '@/mock/projects';
+import ProjectsList, { ProjectListQueryParams } from '@/sections/projects/ProjectsList';
 import { getTeam } from '@/actions/team/getTeam';
+import { getProjects } from '@/actions/projects/getProjetcs';
 
 
 export default async function ProjectsPage({
@@ -10,10 +11,18 @@ export default async function ProjectsPage({
   searchParams,
 }: {
   params: { id: string };
-  searchParams: { [key: string]: string };
+  searchParams: {
+    [key: string]: string
+  };
 }) {
-
   const team = await getTeam();
+  const projects = await getProjects({
+    search: searchParams?.search,
+    tech: searchParams?.tech,
+    team: searchParams?.team,
+    category: searchParams?.category,
+
+  });
   return (
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
