@@ -15,7 +15,6 @@ import { ProjectCardSkeleton } from '@/components/skeletons/ProjectCardSkeleton'
 import { Button } from '@/components/buttons/button'
 import { Member } from '@/types/team'
 import { Technology, Category } from '@/mock/projects'
-import { paths } from '@/routes/paths'
 import { useDebounce } from '@/hooks/useDebounce'
 
 
