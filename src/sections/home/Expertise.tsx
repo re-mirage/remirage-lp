@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { FaGlobe, FaMobileAlt, FaHome, FaChartBar, FaVial, FaServer, FaChevronDown } from 'react-icons/fa'
-import SectionHeadline from '@/components/SectionHeadline'
+import SectionHeading from '@/components/SectionHeading'
 
 interface ServiceCategory {
   id: string
@@ -92,9 +92,9 @@ export default function ExpertiseSection() {
   return (
     <div className="container mx-auto py-16 px-4">
 
-      <SectionHeadline >
+      <SectionHeading >
         Our Expertise
-      </SectionHeadline>
+      </SectionHeading>
       <motion.div
         ref={ref}
         variants={containerVariants}

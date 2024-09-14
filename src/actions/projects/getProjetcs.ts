@@ -9,7 +9,6 @@ interface GetProjectsParams {
 }
 export async function getProjects(query: GetProjectsParams): Promise<Project[]> {
   const { search, tech, team, category } = query;
-  await new Promise((resolve) => setTimeout(resolve, 1000));
   const result = projects.filter((project) => {
     if (search && !project.title.toLowerCase().includes(search.toLowerCase())) {
       return false;

@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import SectionContainer from "@/components/containers/SectionContainer";
 import Link from "next/link";
-import SectionHeadline from "@/components/SectionHeadline";
+import SectionHeading from "@/components/SectionHeading";
 import projects from "@/mock/projects";
 
 
@@ -19,9 +19,9 @@ export default function OurClients() {
             >
 
 
-                <SectionHeadline >
+                <SectionHeading >
                     Our Clients
-                </SectionHeadline>
+                </SectionHeading>
 
 
 

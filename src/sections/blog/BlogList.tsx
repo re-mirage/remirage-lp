@@ -9,6 +9,7 @@ import Link from "next/link"
 import { paths } from "@/routes/paths"
 import { Clock, User } from 'lucide-react'
 import { Button } from '@/components/buttons/button'
+import PageHeading from '@/components/PageHeading'
 
 interface BlogListProps {
     posts: Post[]
@@ -22,11 +23,7 @@ export default function BlogList({ posts }: BlogListProps) {
     }
 
     return (
-        <div className="py-16 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-extrabold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-                Our Latest Insights
-            </h1>
-
+        <div className=" px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
                 {posts.slice(0, visiblePosts).map((post, index) => (
                     <motion.div
