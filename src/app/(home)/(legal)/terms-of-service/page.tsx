@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import Container from '@/layouts/home/Container';
+import PageHeading from '@/components/PageHeading';
 
 async function getTermsOfService() {
   return {
@@ -41,11 +42,9 @@ export default async function TermsOfServicePage() {
   const data = await getTermsOfService();
 
   return (
-    <Container className="py-4 px-4">
+    <Container className="py-16 px-6 md:px:10 lg:px-12">
+      <PageHeading>Terms of Service</PageHeading>
       <Card>
-        <CardHeader>
-          <CardTitle>{data.title}</CardTitle>
-        </CardHeader>
         <CardContent>
           <div className="grid gap-2  ">
             {data.content.split('\n').map((paragraph, index) => (

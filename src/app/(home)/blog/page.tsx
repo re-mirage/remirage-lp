@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import siteMetadata from '@/config/siteMetadata';
 import BlogList from '@/sections/blog/BlogList';
+import PageHeading from '@/components/PageHeading';
 
 export const metadata: Metadata = {
   title: `Our Blog | ${siteMetadata.title}`,
@@ -30,6 +31,10 @@ export default async function Blog() {
 
   return (
     <Container className="px-6 md:px:10 lg:px-12">
+
+      <PageHeading>
+        Our Latest Insights
+      </PageHeading>
       <BlogList posts={posts} />
     </Container>
   );

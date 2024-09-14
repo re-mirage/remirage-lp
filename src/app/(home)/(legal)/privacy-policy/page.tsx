@@ -1,3 +1,4 @@
+import PageHeading from '@/components/PageHeading';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Container from '@/layouts/home/Container';
 import React from 'react';
@@ -38,11 +39,9 @@ export default async function PrivacyPolicyPage() {
   const data = await getPrivacyPolicy();
 
   return (
-    <Container className="py-4 px-4">
+    <Container className="py-16 px-6 md:px:10 lg:px-12">
+      <PageHeading>Privacy Policy</PageHeading>
       <Card>
-        <CardHeader>
-          <CardTitle>{data.title}</CardTitle>
-        </CardHeader>
         <CardContent>
           <div className="grid gap-2  ">
             {data.content.split('\n').map((paragraph, index) => (

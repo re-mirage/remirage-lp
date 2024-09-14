@@ -4,12 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/buttons/button';
 import { Textarea } from '@/components/ui/textarea';
+import PageHeading from '@/components/PageHeading';
 
 export default function Contact() {
   return (
-    <Container>
-      <div className="py-12 w-full">
-        <h1 className="text-4xl font-bold mb-8 text-center">Contact Us</h1>
+    <Container className="py-16 px-6 md:px:10 lg:px-12">
+      <PageHeading>Contact Us</PageHeading>
+      <div className=" w-full">
         <Card className="max-w-screen-lg mx-auto">
           <CardHeader>
             <CardTitle>Get in touch</CardTitle>
