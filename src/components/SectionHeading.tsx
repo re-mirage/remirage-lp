@@ -11,7 +11,7 @@ export default function SectionHeading({ children, className }: SectionHeadingPr
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={cn("text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-100" + className)}
+        className={cn("text-5xl font-bold text-center mb-12  bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-pink-500 " + className)}
     >
         {children}
     </motion.h2>

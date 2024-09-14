@@ -25,7 +25,13 @@ export default function OurClients() {
 
 
 
-                <div className="relative overflow-hidden p-4">
+                <div className="relative overflow-hidden p-4"
+
+                    style={{
+                        maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                        WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+                    }}
+                >
                     <motion.div
                         animate={{ x: [0, '-100%'] }}
                         transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
