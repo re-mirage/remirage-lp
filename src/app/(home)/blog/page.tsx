@@ -7,6 +7,7 @@ import { Button } from '@/components/buttons/button';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import siteMetadata from '@/config/siteMetadata';
+import BlogList from '@/sections/blog/BlogList';
 
 export const metadata: Metadata = {
   title: `Our Blog | ${siteMetadata.title}`,
@@ -29,45 +30,7 @@ export default async function Blog() {
 
   return (
     <Container className="px-6 md:px:10 lg:px-12">
-      <div className="py-12">
-        <h1 className="text-4xl font-bold mb-8 text-center">Our Blog</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post) => (
-            <Card
-              key={post.slug}
-              className="flex flex-col group-hover/bento:translate-x-2 transition duration-200"
-            >
-              <div className="relative w-full h-48">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="rounded-t-lg"
-                />
-              </div>
-
-              <CardHeader>
-                <CardTitle className="text-left">{post.title}</CardTitle>
-                <CardDescription>
-                  {post.date} | By {post.author.name}
-                </CardDescription>
-              </CardHeader>
-
-              <CardContent className="flex-grow">
-                <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
-                  {post.excerpt}
-                </div>
-              </CardContent>
-              <CardContent className="pt-0">
-                <Button asChild>
-                  <Link href={`/blog/${post.slug}`}>Read More</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
+      <BlogList posts={posts} />
     </Container>
   );
 }

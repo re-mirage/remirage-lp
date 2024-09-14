@@ -1,68 +1,60 @@
-'use client';
-import { m } from 'framer-motion';
-import { useState, useEffect } from 'react';
+"use client"
+import React from 'react';
+import { motion } from 'framer-motion';
 import Logo from '../logo/Logo';
 
-export default function SplashScreen({ className, ...other }: any) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
+const SectionLoadingAnimation = ({ className = '' }) => {
   return (
-    <div
-      className={`absolute inset-0 z-50 flex items-center justify-center bg-black${className}`}
-      {...other}
-    >
-      <>
-        <m.div
+    <div className={`relative w-full h-64 overflow-hidden ${className}`}>
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.div
+          className="relative w-24 h-24 border-4 border-primary-300 rounded-full flex items-center justify-center"
           animate={{
-            scale: [1, 0.9, 0.9, 1, 1],
-            opacity: [1, 0.48, 0.48, 1, 1],
+            scale: [1, 1.2, 1],
+            rotate: [0, 360],
+            borderRadius: ["50%", "40%", "50%"],
           }}
           transition={{
             duration: 2,
-            ease: 'easeInOut',
-            repeatDelay: 1,
+            ease: "easeInOut",
+            times: [0, 0.5, 1],
             repeat: Infinity,
           }}
         >
-          <Logo className="w-16 h-16" />
-        </m.div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Logo className="w-8 h-8" />
+          </div>
+        </motion.div>
+      </motion.div>
 
-        <m.div
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+      >
+        <motion.div
+          className="w-36 h-36 border-4 border-purple-600 rounded-full"
           animate={{
-            scale: [1.6, 1, 1, 1.6, 1.6],
-            rotate: [270, 0, 0, 270, 270],
-            opacity: [0.25, 1, 1, 1, 0.25],
-            borderRadius: ['25%', '25%', '50%', '50%', '25%'],
-          }}
-          transition={{ ease: 'linear', duration: 3.2, repeat: Infinity }}
-          className="absolute w-24 h-24 border-3 border-opacity-24"
-          style={{ borderColor: 'rgba(0, 0, 0, 0.24)' }}
-        />
-
-        <m.div
-          animate={{
-            scale: [1, 1.2, 1.2, 1, 1],
-            rotate: [0, 270, 270, 0, 0],
-            opacity: [1, 0.25, 0.25, 0.25, 1],
-            borderRadius: ['25%', '25%', '50%', '50%', '25%'],
+            scale: [1, 1.1, 1],
+            rotate: [0, -360],
+            borderRadius: ["50%", "40%", "50%"],
           }}
           transition={{
-            ease: 'linear',
-            duration: 3.2,
+            duration: 3,
+            ease: "easeInOut",
+            times: [0, 0.5, 1],
             repeat: Infinity,
           }}
-          className="absolute w-30 h-30 border-8 border-opacity-24"
-          style={{ borderColor: 'rgba(0, 0, 0, 0.24)' }}
         />
-      </>
+      </motion.div>
     </div>
   );
-}
+};
+
+export default SectionLoadingAnimation;

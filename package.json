@@ -36,6 +36,7 @@
     "embla-carousel-react": "^8.1.7",
     "framer-motion": "^11.3.8",
     "install": "^0.13.0",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.416.0",
     "next": "rc",
     "next-themes": "^0.3.0",

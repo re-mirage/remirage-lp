@@ -10,6 +10,7 @@ import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import { FaEnvelope, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa'
 import { Member } from '@/types/team'
 import { Project } from '@/types/project'
+import TechnologiesBadgeList from '@/components/TechnologyBadgeList'
 
 interface SocialLinkProps {
     href: string
@@ -113,7 +114,7 @@ export default function MemberProfile({ member, projects }: MemberProfileProps) 
                                                         animate={{ opacity: 1, scale: 1 }}
                                                         transition={{ delay: 0.05 * index }}
                                                     >
-                                                        <Badge variant="secondary">{skill}</Badge>
+                                                        <TechnologiesBadgeList technologies={[skill]} />
                                                     </motion.div>
                                                 ))}
                                             </motion.div>
@@ -171,14 +172,14 @@ export default function MemberProfile({ member, projects }: MemberProfileProps) 
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+                            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
                             onClick={() => setSelectedProject(null)}
                         >
                             <motion.div
                                 initial={{ scale: 0.9 }}
                                 animate={{ scale: 1 }}
                                 exit={{ scale: 0.9 }}
-                                className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-2xl w-full"
+                                className="bg-white dark:bg-gray-900 rounded-lg p-6 max-w-2xl w-full"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <h2 className="text-2xl font-bold mb-4">{selectedProject.title}</h2>
@@ -194,9 +195,7 @@ export default function MemberProfile({ member, projects }: MemberProfileProps) 
                                 </div>
                                 <p className="text-gray-600 dark:text-gray-400 mb-4">{selectedProject.description}</p>
                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    {selectedProject.technologies.map((tech) => (
-                                        <Badge key={tech} variant="outline">{tech}</Badge>
-                                    ))}
+                                    <TechnologiesBadgeList technologies={selectedProject.technologies} />
                                 </div>
                                 <a
                                     href={selectedProject.url}
