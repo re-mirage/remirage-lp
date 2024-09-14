@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion, useTransform, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import Link from 'next/link';
 
 export const AnimatedTooltip = ({
   items,
@@ -11,6 +12,7 @@ export const AnimatedTooltip = ({
     name: string;
     designation: string;
     image: string;
+    url?: string;
   }[];
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -63,14 +65,16 @@ export const AnimatedTooltip = ({
               </motion.div>
             )}
           </AnimatePresence>
-          <Image
-            onMouseMove={handleMouseMove}
-            height={100}
-            width={100}
-            src={item.image}
-            alt={item.name}
-            className="object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
-          />
+          <Link href={item.url || ""}>
+            <Image
+              onMouseMove={handleMouseMove}
+              height={100}
+              width={100}
+              src={item.image}
+              alt={item.name}
+              className="object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
+            />
+          </Link>
         </div>
       ))}
     </>
