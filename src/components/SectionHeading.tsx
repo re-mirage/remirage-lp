@@ -2,11 +2,11 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import React, { ReactNode } from "react";
 
-interface SectionHeadlineProps {
+interface SectionHeadingProps {
     children: ReactNode
     className?: string
 }
-export default function SectionHeadline({ children, className }: SectionHeadlineProps) {
+export default function SectionHeading({ children, className }: SectionHeadingProps) {
     return <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Button } from '@/components/buttons/button';
+import PageHeading from '@/components/PageHeading';
 
 const pricingPlans = [
   {
@@ -33,30 +34,30 @@ const pricingPlans = [
 
 export default function Pricing() {
   return (
-    <Container>
-      <div className="py-12">
-        <h1 className="text-4xl font-bold mb-8 text-center">Pricing Plans</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {pricingPlans.map((plan, index) => (
-            <Card key={index} className="flex flex-col">
-              <CardHeader>
-                <CardTitle>{plan.name}</CardTitle>
-                <CardDescription>{plan.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <p className="text-3xl font-bold mb-4">{plan.price}</p>
-                <ul className="space-y-2">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex}>✓ {feature}</li>
-                  ))}
-                </ul>
-              </CardContent>
-              <CardFooter>
-                <Button className="w-full">Choose Plan</Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+    <Container className="py-16 px-6 md:px:10 lg:px-12">
+      <PageHeading>Choose the plan that best suits your needs</PageHeading>
+
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {pricingPlans.map((plan, index) => (
+          <Card key={index} className="flex flex-col">
+            <CardHeader>
+              <CardTitle>{plan.name}</CardTitle>
+              <CardDescription>{plan.description}</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <p className="text-3xl font-bold mb-4">{plan.price}</p>
+              <ul className="space-y-2">
+                {plan.features.map((feature, featureIndex) => (
+                  <li key={featureIndex}>✓ {feature}</li>
+                ))}
+              </ul>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full">Choose Plan</Button>
+            </CardFooter>
+          </Card>
+        ))}
       </div>
     </Container>
   );

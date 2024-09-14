@@ -4,6 +4,8 @@ import React from 'react';
 import ProjectsList, { ProjectListQueryParams } from '@/sections/projects/ProjectsList';
 import { getTeam } from '@/actions/team/getTeam';
 import { getProjects } from '@/actions/projects/getProjetcs';
+import PageHeading from '@/components/PageHeading';
+import Container from '@/layouts/home/Container';
 
 
 export default async function ProjectsPage({
@@ -24,14 +26,14 @@ export default async function ProjectsPage({
 
   });
   return (
-    <div className="min-h-screen">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 text-center">Projects</h1>
-        <ProjectsList projects={projects}
-          team={team}
 
-        />
-      </div>
-    </div>
+    <Container className="py-16 px-6 md:px:10 lg:px-12">
+      <PageHeading>Team Projects Overview</PageHeading>
+
+      <ProjectsList projects={projects}
+        team={team}
+
+      />
+    </Container>
   );
 }

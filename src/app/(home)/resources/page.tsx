@@ -2,6 +2,7 @@ import React from 'react';
 import Container from '@/layouts/home/Container';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/buttons/button';
+import PageHeading from '@/components/PageHeading';
 
 const resources = [
   {
@@ -23,25 +24,28 @@ const resources = [
 
 export default function ResourcesPage() {
   return (
-    <Container>
-      <div className="py-12">
-        <h1 className="text-4xl font-bold mb-8 text-center">Resources</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {resources.map((resource, index) => (
-            <Card key={index}>
-              <CardHeader>
-                <CardTitle>{resource.title}</CardTitle>
-                <CardDescription>{resource.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button asChild>
-                  <a href={resource.link}>Access Resource</a>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+
+    <Container className="py-16 px-6 md:px:10 lg:px-12">
+      <PageHeading>
+        Resources
+      </PageHeading>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {resources.map((resource, index) => (
+          <Card key={index}>
+            <CardHeader>
+              <CardTitle>{resource.title}</CardTitle>
+              <CardDescription>{resource.description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild>
+                <a href={resource.link}>Access Resource</a>
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
       </div>
+
     </Container>
   );
 }

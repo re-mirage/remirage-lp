@@ -63,7 +63,7 @@ import {
 } from 'react-icons/si';
 import { IconType } from 'react-icons/lib';
 import { Technology } from '@/types/home';
-import SectionHeadline from '@/components/SectionHeadline';
+import SectionHeading from '@/components/SectionHeading';
 
 
 
@@ -293,9 +293,9 @@ export default function TechnologiesSection() {
     <SectionContainer>
 
 
-      <SectionHeadline >
+      <SectionHeading >
         Technologies We Work With
-      </SectionHeadline>
+      </SectionHeading>
 
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

@@ -65,7 +65,7 @@ export default function ProjectsList({ projects, team }: ProjectsListProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-8 flex flex-wrap gap-4">
+      <div className="mb-8  gap-4  grid grid-cols-2 lg:grid-cols-4">
         <Input
           placeholder="Search projects..."
           value={searchInput}
@@ -73,7 +73,7 @@ export default function ProjectsList({ projects, team }: ProjectsListProps) {
           className="max-w-xs"
         />
         <Select value={techFilter ?? 'all'} onValueChange={updateTechFilter}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full">
             <SelectValue placeholder="Filter by technology" />
           </SelectTrigger>
           <SelectContent>
@@ -86,8 +86,9 @@ export default function ProjectsList({ projects, team }: ProjectsListProps) {
               ))}
           </SelectContent>
         </Select>
+
         <Select value={teamFilter ?? 'all'} onValueChange={updateTeamFilter}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full">
             <SelectValue placeholder="Filter by team member" />
           </SelectTrigger>
           <SelectContent>
@@ -100,7 +101,7 @@ export default function ProjectsList({ projects, team }: ProjectsListProps) {
           </SelectContent>
         </Select>
         <Select value={categoryFilter ?? 'all'} onValueChange={updateCategoryFilter}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full">
             <SelectValue placeholder="Filter by category" />
           </SelectTrigger>
           <SelectContent>
@@ -112,6 +113,7 @@ export default function ProjectsList({ projects, team }: ProjectsListProps) {
             ))}
           </SelectContent>
         </Select>
+
       </div>
       <AnimatePresence mode="wait">
         <motion.div
