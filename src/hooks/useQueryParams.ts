@@ -3,10 +3,11 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { startTransition as reactStartTransition, useTransition } from 'react';
 
 interface UseQueryParamsOptions {
+    path?: string;
     startTransition?: typeof reactStartTransition;
 }
 
-export function useQueryParams({ startTransition: externalStartTransition }: UseQueryParamsOptions = {}) {
+export function useQueryParams({ path, startTransition: externalStartTransition }: UseQueryParamsOptions = {}) {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [isPending, startInternalTransition] = useTransition();
@@ -22,8 +23,8 @@ export function useQueryParams({ startTransition: externalStartTransition }: Use
     const push = useCallback((newParams: Record<string, string>) => {
         startTransition(() => {
             const newQueryString = createQueryString(newParams);
-            window.history.pushState(null, '', `?${newQueryString}`);
-            router.push(`?${newQueryString}`);
+            window.history.pushState(null, '', path + `?${newQueryString}`);
+            router.push(path + `?${newQueryString}`);
         });
     }, [router, createQueryString, startTransition]);
 
