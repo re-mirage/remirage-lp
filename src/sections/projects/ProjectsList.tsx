@@ -16,6 +16,8 @@ import { Button } from '@/components/buttons/button'
 import { Member } from '@/types/team'
 import { Technology, Category } from '@/mock/projects'
 import { useDebounce } from '@/hooks/useDebounce'
+import { paths } from '@/routes/paths'
+import TechnologiesList from '@/components/TechnologyBadgeList'
 
 
 interface ProjectsListProps {
@@ -153,21 +155,10 @@ export default function ProjectsList({ projects, team }: ProjectsListProps) {
                   <CardContent className="p-4 flex-grow">
                     <CardTitle className="text-xl mb-2 line-clamp-1">{project.title}</CardTitle>
                     <p className="text-sm text-gray-600 mb-4 line-clamp-3">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.slice(0, 3).map((tech) => (
-                        <Badge key={tech} variant="secondary" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
-                      {project.technologies.length > 3 && (
-                        <Badge variant="secondary" className="text-xs">
-                          +{project.technologies.length - 3}
-                        </Badge>
-                      )}
-                    </div>
+                    <TechnologiesList technologies={project.technologies} limit={10} startTransition={startTransition} />
                   </CardContent>
                   <CardFooter className="p-4 flex justify-between items-center">
-                    <div className="flex flex-row items-center justify-center mb-10 w-full">
+                    <div className="flex flex-row  mb-10 w-full">
 
                       <AnimatedTooltip
 
@@ -176,6 +167,7 @@ export default function ProjectsList({ projects, team }: ProjectsListProps) {
                           name: `${member.first_name} ${member.last_name}`,
                           designation: member.position,
                           image: member.avatar,
+                          url: paths.landing.team.member(member.username),
                         }))}
                       />
 
