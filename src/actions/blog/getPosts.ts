@@ -1,12 +1,6 @@
 import { posts } from '@/mock/blog';
+import { Post } from '@/types/blog';
 
-export async function getPosts() {
-  return posts.map(({ slug, title, excerpt, date, author, image }) => ({
-    slug,
-    title,
-    excerpt,
-    date,
-    author,
-    image,
-  }));
+export async function getPosts(): Promise<Post[]> {
+  return posts
 }

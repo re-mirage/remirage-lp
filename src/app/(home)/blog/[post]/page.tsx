@@ -8,6 +8,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { Metadata } from 'next';
 import siteMetadata from '@/config/siteMetadata';
+import ArticleDetails from '@/sections/blog/ArticleDetails';
+import { getPosts } from '@/actions/blog/getPosts';
 
 export async function generateMetadata({
   params,
@@ -45,53 +47,16 @@ export async function generateMetadata({
 export default async function BlogPost({ params }: { params: { post: string } }) {
   const post = await getPost(params.post);
 
+  // TODO: fetch only related posts by in a different  server component  to use fallback
+  const posts = await getPosts();
+
   if (!post) {
     notFound();
   }
 
   return (
     <Container>
-      <article className="py-12 max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          <div className="flex items-center space-x-4">
-            <Avatar>
-              <AvatarImage src={post.author.avatar} alt={post.author.name} />
-              <AvatarFallback>
-                {post.author.name
-                  .split(' ')
-                  .map((n) => n[0])
-                  .join('')}
-              </AvatarFallback>
-            </Avatar>
-            <div>
-              <p className="font-medium">{post.author.name}</p>
-              <p className="text-sm text-muted-foreground">
-                {post.date} · {post.readingTime}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="relative w-full h-[400px] mb-8">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            style={{ objectFit: 'cover' }}
-            className="rounded-lg"
-          />
-        </div>
-
-        <Card>
-          <CardContent className="pt-6">
-            <div
-              dangerouslySetInnerHTML={{ __html: post.content }}
-              className="prose prose-lg max-w-none"
-            />
-          </CardContent>
-        </Card>
-      </article>
+      <ArticleDetails post={post} relatedPosts={posts} />
     </Container>
   );
 }
