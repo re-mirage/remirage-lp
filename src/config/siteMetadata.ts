@@ -25,9 +25,9 @@ const siteMetadata = {
     instagram: 'https://www.instagram.com/re-mirage',
   },
   contactInfo: {
-    address: '1234 Street Name, City Name, United States',
+    address: '20 Wenlock Road, London, England, N1 7GU',
     email: 'contact@remirage.com',
-    phone: '+1 (123) 456-7890',
+    phone: '+44 1234567890',
   },
 };
 
