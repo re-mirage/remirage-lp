@@ -18,11 +18,11 @@ const siteMetadata = {
     },
   },
   socials: {
-    x: 'https://www.x.com/re-mirage',
+    x: 'https://www.x.com/remirageltd',
     github: 'https://www.github.com/re-mirage',
-    facebook: 'https://www.facebook.com/re-mirage',
-    youtube: 'https://www.youtube.com/re-mirage',
-    instagram: 'https://www.instagram.com/re-mirage',
+    facebook: 'https://www.facebook.com/remirageltd',
+    youtube: 'https://www.youtube.com/@remirageltd',
+    instagram: 'https://www.instagram.com/remirageltd',
   },
   contactInfo: {
     address: '20 Wenlock Road, London, England, N1 7GU',
