@@ -22,9 +22,9 @@ const navigation = [
   { title: 'Projects', href: paths.landing.projects.root() },
   { title: 'Team', href: paths.landing.team.root() },
   { title: 'Blog', href: paths.landing.blog.root() },
-  { title: 'Solution', href: paths.landing.solution.root() },
-  { title: 'Resources', href: paths.landing.resources.root() },
-  { title: 'Pricing', href: paths.landing.pricing.root() },
+  // { title: 'Solution', href: paths.landing.solution.root() },
+  // { title: 'Resources', href: paths.landing.resources.root() },
+  // { title: 'Pricing', href: paths.landing.pricing.root() },
   { title: 'Contact Us', href: paths.landing.contact.root() },
 ]
 

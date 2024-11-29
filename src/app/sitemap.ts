@@ -7,7 +7,7 @@ import { team } from '@/mock/team';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = siteMetadata.siteUrl;
-  const routes = ['blog', 'contact', 'pricing', 'ressources', 'solution', "projects", "team"].map((route) => ({
+  const routes = ['blog', 'contact', 'pricing', 'resources', 'solution', "projects", "team"].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }));
