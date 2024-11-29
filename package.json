@@ -38,6 +38,7 @@
     "install": "^0.13.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.416.0",
+    "modern-normalize": "^3.0.1",
     "next": "rc",
     "next-themes": "^0.3.0",
     "nuqs": "^1.19.1",

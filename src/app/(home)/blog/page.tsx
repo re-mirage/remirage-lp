@@ -30,7 +30,7 @@ export default async function Blog() {
   const posts = await getPosts();
 
   return (
-    <Container className="px-6 md:px:10 lg:px-12">
+    <Container className="p-6 md:px:10 lg:px-12">
 
       <PageHeading>
         Our Latest Insights

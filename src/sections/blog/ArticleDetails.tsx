@@ -13,6 +13,8 @@ import { useInView } from 'react-intersection-observer'
 import { Button } from '@/components/buttons/button'
 import ScrollToTop from '@/components/ScrollToTop'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import parse from 'html-react-parser';
+
 
 interface ArticleDetailsProps {
     post: Post
@@ -45,7 +47,7 @@ export default function ArticleDetails({ post, relatedPosts }: ArticleDetailsPro
             transition={{ duration: 0.5 }}
         >
             <div ref={topRef} className="mb-8">
-                <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-primary">{post.title}</h1>
+                <h1 className="text-2xl sm:text-4xl font-extrabold mb-4 text-primary">{post.title}</h1>
                 <div className="flex items-center justify-between flex-wrap gap-4">
                     <div className="flex items-center space-x-4">
                         <Avatar>
@@ -107,9 +109,11 @@ export default function ArticleDetails({ post, relatedPosts }: ArticleDetailsPro
             <div className="flex gap-8">
                 <div className="flex-grow">
                     <div
-                        dangerouslySetInnerHTML={{ __html: post.content }}
-                        className="prose prose-lg max-w-none dark:prose-invert"
+
+                        dangerouslySetInnerHTML={{ __html: `<div>${post.content}</div>` }}
+                        className="post-content prose prose-2xl prose-headings:text-primary prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl max-w-none dark:prose-invert"
                     />
+
 
                     <div className="mt-12">
                         <h3 className="text-lg font-semibold mb-4">Share this article</h3>
