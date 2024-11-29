@@ -13,7 +13,6 @@ import { useInView } from 'react-intersection-observer'
 import { Button } from '@/components/buttons/button'
 import ScrollToTop from '@/components/ScrollToTop'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import parse from 'html-react-parser';
 
 
 interface ArticleDetailsProps {
