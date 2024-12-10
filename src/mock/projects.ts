@@ -120,7 +120,7 @@ const projects: Project[] = [
     images: ['https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/masterdrain/1.png', 'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/masterdrain/2.png'],
     thumbnail: 'https://hmhceahmonkrwcpviaoa.supabase.co/storage/v1/object/public/projects/masterdrain/thumbnail.png',
     technologies: [Technology.NextJS, Technology.MongoDB, Technology.NodeJS, Technology.WebSocket],
-    team: [team[0], team[1]],
+    team: [team[0], team[1], team[2]],
   },
   {
     id: '5',
