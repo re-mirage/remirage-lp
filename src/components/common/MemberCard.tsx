@@ -33,7 +33,7 @@ export default function MemberCard({ member }: MemberCardProps) {
             <CardTitle>
               {member.first_name} {member.last_name}
             </CardTitle>
-            <CardDescription>{member.role}</CardDescription>
+            <CardDescription>{member.position}</CardDescription>
           </div>
         </CardHeader>
         <CardContent>
